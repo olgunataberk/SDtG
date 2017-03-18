@@ -1,3 +1,7 @@
 bin/
 *.strg
+<<<<<<< HEAD
 WrittenStuff/
+=======
+/WrittenStuff
+>>>>>>> a0c547b91e648908125b3fe7dd3d83f06aad6eaa
