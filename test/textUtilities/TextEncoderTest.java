@@ -12,12 +12,14 @@ public class TextEncoderTest {
 	TextEncoder testObj;
 	
 	@Before
-	public void setUp(){
+	public void setUp()
+	{
 		testObj = new TextEncoder();
 	}
 	
 	@Test
-	public void testSampleInput() {
+	public void testSampleInput() 
+	{
 		ArrayList<String> smpIn = new ArrayList<>();
 		smpIn.add("abc"); smpIn.add("def");
 		ArrayList<Character> smpOut = testObj.encodeText(smpIn);

@@ -6,12 +6,25 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 import textUsage.TextLine;
+import textUsage.TextLineParser;
 
+/**
+ * Utility for turning text into text.
+ *
+ */
 public class ScriptToGameText {
+	
+	private TextLineParser tlp;
+	
+	public ScriptToGameText(TextLineParser tlp)
+	{
+		this.tlp = tlp;
+	}
+	
 	/**
 	 * 
-	 * @param chunk
-	 * @return
+	 * @param chunk string to be tokenized and converted
+	 * @return equivalent TextLine objects in a list.
 	 */
 	public ArrayList<TextLine> convert(String chunk)
 	{
@@ -23,7 +36,7 @@ public class ScriptToGameText {
 	}
 	
 	/**
-	 * 
+	 * Converts given strings into a list of TextLine objects.
 	 * @param lines
 	 * @return
 	 */
@@ -31,14 +44,19 @@ public class ScriptToGameText {
 	{
 		if(lines == null)
 			return null;
-		
-		ArrayList<TextLine> toReturn = null;
+		ArrayList<TextLine> toReturn = new ArrayList<>();
+		for(String s : lines)
+		{
+			TextLine tl = tlp.parseLine(s);
+			if(tl != null)
+				toReturn.add(tl);
+		}
 		return toReturn;
 	}
 	
 	/**
-	 * 
-	 * @param fileName
+	 * Converts the content of a file into a list of TextLine objects.
+	 * @param path path to file
 	 * @return
 	 */
 	public ArrayList<TextLine> convertFromFile(String path)

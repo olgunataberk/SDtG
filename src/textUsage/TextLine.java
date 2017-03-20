@@ -1,5 +1,9 @@
 package textUsage;
 
+/**
+ * Contains information regarding a line of text.
+ * 
+ */
 public class TextLine {
 	
 	protected String subject;
@@ -7,6 +11,6 @@ public class TextLine {
 	
 	public String speak()
 	{
-		return this.line + ": "+subject;
+		return this.subject + ": "+this.line;
 	}
 }

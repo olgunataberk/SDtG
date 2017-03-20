@@ -13,13 +13,15 @@ public class TextIoTest {
 	TextReader tr;
 	
 	@Before
-	public void setUp() throws Exception {
+	public void setUp() throws Exception 
+	{
 		tw = new TextWriter();
 		tr = new TextReader();				
 	}
 
 	@Test
-	public void testInputOutput() {
+	public void testInputOutput() 
+	{
 		ArrayList<Character> smpIn = new ArrayList<>();
 		smpIn.add('e'); smpIn.add('b');
 		tw.writeObject(smpIn);
