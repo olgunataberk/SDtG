@@ -9,23 +9,24 @@ import org.junit.Test;
 
 public class TextIoTest {
 
-	TextWriter tw;
-	TextReader tr;
-	
-	@Before
-	public void setUp() throws Exception 
-	{
-		tw = new TextWriter();
-		tr = new TextReader();				
-	}
+    TextWriter tw;
+    TextReader tr;
 
-	@Test
-	public void testInputOutput() 
-	{
-		ArrayList<Character> smpIn = new ArrayList<>();
-		smpIn.add('e'); smpIn.add('b');
-		tw.writeObject(smpIn);
-		assertTrue(tr.readObject().get(0) == 'e');
-	}
+    @Before
+    public void setUp() throws Exception
+    {
+        tw = new TextWriter();
+        tr = new TextReader();
+    }
+
+    @Test
+    public void testInputOutput()
+    {
+        ArrayList<Character> smpIn = new ArrayList<>();
+        smpIn.add('e');
+        smpIn.add('b');
+        tw.writeObject(smpIn);
+        assertTrue(tr.readObject().get(0) == 'e');
+    }
 
 }

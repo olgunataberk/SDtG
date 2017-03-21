@@ -1,5 +1,5 @@
 package textUtilities;
 
 public abstract class TextCryption {
-	protected char DELIMITER = '࿕';
+    protected char DELIMITER = '࿕';
 }

@@ -12,44 +12,44 @@ import textUsage.TextLineParser;
 
 public class TestScriptToGameText {
 
-	ScriptToGameText testObj;
-	TextLineParser helperObj;
-	
-	@Before
-	public void setUp()
-	{
-		helperObj = new TextLineParser();
-		testObj = new ScriptToGameText(helperObj);
-	}
+    ScriptToGameText testObj;
+    TextLineParser helperObj;
 
-	@Test
-	public void testSimpleLine() 
-	{
-		String aLine = testObj.convert("MehmetTan: Testing 101.").get(0).speak();
-		assertTrue(aLine.equals("MehmetTan: Testing 101."));
-	}
+    @Before
+    public void setUp()
+    {
+        helperObj = new TextLineParser();
+        testObj = new ScriptToGameText(helperObj);
+    }
 
-	@Test
-	public void testMultipleLines() 
-	{
-		ArrayList<TextLine> txtLn = testObj.convert("MehmetTan: Testing 101.\nOsmanAbul: Di mi?");
-		assertTrue(txtLn.get(0).speak().equals("MehmetTan: Testing 101.") && 
-				txtLn.get(1).speak().equals("OsmanAbul: Di mi?"));
-	}
-	
-	@Test
-	public void testFileInput()
-	{
-		ArrayList<TextLine> txtLn = testObj.convertFromFile("WrittenStuff\\GameScript");
-		//for(TextLine txt : txtLn)
-			//System.out.println(txt.speak());
-		assertTrue(txtLn.size() > 10);
-	}
-	
-	@Test
-	public void testWrongInput()
-	{
-		assertTrue(testObj.convert("MehmetTan Testing 101").size() == 0);
-	}
-	
+    @Test
+    public void testSimpleLine()
+    {
+        String aLine = testObj.convert("MehmetTan: Testing 101.").get(0).speak();
+        assertTrue(aLine.equals("MehmetTan: Testing 101."));
+    }
+
+    @Test
+    public void testMultipleLines()
+    {
+        ArrayList<TextLine> txtLn = testObj.convert("MehmetTan: Testing 101.\nOsmanAbul: Di mi?");
+        assertTrue(txtLn.get(0).speak().equals("MehmetTan: Testing 101.")
+                && txtLn.get(1).speak().equals("OsmanAbul: Di mi?"));
+    }
+
+    @Test
+    public void testFileInput()
+    {
+        ArrayList<TextLine> txtLn = testObj.convertFromFile("WrittenStuff\\GameScript.txt");
+        for (TextLine txt : txtLn)
+            System.out.println(txt.speak());
+        assertTrue(txtLn.size() > 10);
+    }
+
+    @Test
+    public void testWrongInput()
+    {
+        assertTrue(testObj.convert("MehmetTan Testing 101").size() == 0);
+    }
+
 }
