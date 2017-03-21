@@ -9,16 +9,16 @@ public class MainGame {
 
     public static void main(String[] args) throws InterruptedException
     {
-        TextOutputRunnable runobj = new TextOutputRunnable();
-        LinkedList<String> txtqueue = runobj.getOutputQueue();
+        LinkedList<String> txtqueue = new LinkedList<String>();
+        TextOutputRunnable runobj = new TextOutputRunnable(2, txtqueue);
         OutputThread opthrd = new OutputThread(runobj);
         opthrd.start();
         txtqueue.add("Testing cool output");
         txtqueue.add("Still testing cool output");
         while (true)
         {
-            Thread.sleep(1000);
-            txtqueue.add("Surprise still testing");
+            Thread.sleep(5000);
+            txtqueue.add("Surprise still testing, Actually testing long long output just so I can judge better with my eyes.");
         }
     }
 

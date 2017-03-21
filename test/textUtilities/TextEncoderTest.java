@@ -10,7 +10,6 @@ import org.junit.Test;
 public class TextEncoderTest {
 
     TextEncoder testObj;
-
     @Before
     public void setUp()
     {
