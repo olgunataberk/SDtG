@@ -1,9 +1,12 @@
 package preferences;
 
+/**
+ * Holds information about user's preferences.
+ *
+ */
 public class Config {
     /**
-     * The class that holds information regarding player's preferences.
-     * @author ataberk
+     * Holds information regarding player's preferences.
      *
      */
     public static class PlayerConfig {

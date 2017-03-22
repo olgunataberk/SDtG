@@ -2,7 +2,6 @@ package threading.runnables;
 
 /**
  * Contains information on how a runnable should run.
- * @author ataberk
  *
  */
 public class RunnableConfiguration {

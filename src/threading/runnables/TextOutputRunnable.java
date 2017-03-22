@@ -5,8 +5,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- * Runnable to be used for printing output to console. 
- * @author ataberk
+ * Runnable to be used for printing output to console.
  *
  */
 public class TextOutputRunnable extends RunnableConfiguration implements Runnable {
