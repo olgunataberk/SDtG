@@ -1,7 +1,7 @@
 package textUsage;
 
 /**
- * Contains information regarding a line of text.
+ * Contains various information about a line of text to be processed and displayed on screen.
  * 
  */
 public class TextLine {

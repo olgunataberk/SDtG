@@ -4,20 +4,34 @@ import java.util.LinkedList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+/**
+ * Runnable to be used for printing output to console. 
+ * @author ataberk
+ *
+ */
 public class TextOutputRunnable extends RunnableConfiguration implements Runnable {
 
+    // TODO Fetch this information from somewhere else, as this might be changed on runtime.
     private static final int SLEEP_INTERPRINT = 40;
     private static final char DELIMITER = '\n';
 
     // TODO try and make a write only(from outside) linked list.
     private LinkedList<String> outputQueue;
 
+    /**
+     * 
+     * @param severity How important the execution of this thread is (Not important: 0-1-2 :Very important).
+     * @param outQue Queue to fetch strings from.
+     */
     public TextOutputRunnable(int severity, LinkedList<String> outQue)
     {
         super(severity);
         outputQueue = outQue;
     }
 
+    /**
+     * Try outputting the first string on queue to console.
+     */
     @Override
     public void run()
     {
