@@ -1,7 +1,11 @@
-package textUsage;
+package parsing;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
+import textUsage.NpcTextLine;
+import textUsage.PlayerTextLine;
+import textUsage.TextLine;
 
 /**
  * Turn text input into rich TextLine objects.
