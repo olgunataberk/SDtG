@@ -7,8 +7,8 @@ import java.util.ArrayList;
 import org.junit.Before;
 import org.junit.Test;
 
+import parsing.TextLineParser;
 import textUsage.TextLine;
-import textUsage.TextLineParser;
 
 public class TestScriptToGameText {
 

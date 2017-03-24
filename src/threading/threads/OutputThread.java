@@ -1,7 +1,7 @@
 package threading.threads;
 
 /**
- * Thread class that handles various types of output.
+ * Thread handling various types of output.
  *
  */
 public class OutputThread extends Thread {

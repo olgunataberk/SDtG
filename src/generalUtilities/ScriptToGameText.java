@@ -5,8 +5,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import parsing.TextLineParser;
 import textUsage.TextLine;
-import textUsage.TextLineParser;
 
 /**
  * Utility for turning text into text.
