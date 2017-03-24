@@ -11,4 +11,8 @@ public class Tokens {
     public static final String SCRIPT_END_TOKEN = "END_SCRIPT";
     public static final String CHOICE_START_TOKEN = "<";
     public static final String CHOICE_END_TOKEN = ">";
+    public static final String LEFT_PARANTHESIS = "(";
+    public static final String RIGHT_PARANTHESIS = ")";
+    public static final String COMMA = ",";
+    
 }

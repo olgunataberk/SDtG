@@ -2,8 +2,6 @@ package parsing;
 
 import java.io.InputStream;
 import java.util.Scanner;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public class Lexer {
 
@@ -15,6 +13,7 @@ public class Lexer {
     private int pointer;
     //Holds lexeme of a token after it is read.
     public String read_text;
+    public String read_type;
     
     public Lexer(InputStream fis)
     {
@@ -98,11 +97,6 @@ public class Lexer {
             pointer++;
     }
     
-    private void previous()
-    {
-        pointer = buffer.substring(pointer-2).lastIndexOf(" ") + 1;
-    }
-    
     private void read_karma_start_token()
     {
         String read = next(Tokens.KARMA_START_TOKEN);
@@ -126,12 +120,7 @@ public class Lexer {
     {
         String read = next_delimiter(" ");
         read_text = read;
-    }
-    
-    //TODO fill.
-    private boolean reserved_check(String str)
-    {
-        return true;
+        read_type = "identifier";
     }
     
     private void read_script_start_token()
@@ -149,6 +138,7 @@ public class Lexer {
     {
         String read = next_delimiter("\"");
         read_text = read;
+        read_type = "string";
     }
     
     private void read_choice_start_token()
@@ -179,6 +169,7 @@ public class Lexer {
     {
         String read = next_delimiter(" ");
         read_text = read;
+        read_type = "integer";
     }
     
     private void read_or_token()
