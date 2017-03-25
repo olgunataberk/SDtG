@@ -63,6 +63,14 @@ public class Lexer {
         return true;
     }
     
+    public void unlex(int length)
+    {
+        pointer--;
+        while(buffer.charAt(pointer)==' ')
+            pointer--;
+        pointer -= (length-1);
+    }
+    
     private String next_one_of(String[] read_these)
     {
         for(int i = 0 ; i < read_these.length ; i++)

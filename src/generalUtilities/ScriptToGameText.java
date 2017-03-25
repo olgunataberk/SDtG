@@ -9,7 +9,7 @@ import parsing.TextLineParser;
 import textUsage.TextLine;
 
 /**
- * Utility for turning text into text.
+ * Utility for turning text into game.
  *
  */
 public class ScriptToGameText {

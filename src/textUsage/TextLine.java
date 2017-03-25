@@ -6,6 +6,7 @@ package textUsage;
  */
 public class TextLine {
 
+    protected int karmaTrigger;
     protected String subject;
     protected String line;
 
