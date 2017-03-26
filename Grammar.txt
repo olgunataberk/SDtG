@@ -1,8 +1,8 @@
 GAME:
-	KARMA_DECLARATION_SECTION SCRRIPT_SECTION
+	KARMA_DECLARATION_SECTION SCRIPT_SECTION
 
 KARMA_DECLARATION_SECTION:
-	karma_start_token newline_token ( IDENTIFIER_LIST ) karma_end_token
+	declaration_start newline_token ( IDENTIFIER_LIST ) declaration_end
 
 IDENTIFIER_LIST:
 	identifier , IDENTIFIER_LIST
