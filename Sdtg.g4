@@ -4,24 +4,23 @@
 
 grammar Sdtg;
 
-Whitespace: [ \t]+ -> skip ;
+Whitespace: [ \t\n]+ -> skip ;
 
-DeclarationStart: 'initialize' '\n' ;
-DeclarationEnd: 'end' ;
+String: '"' ~["]* '"';
 
-Identifier: [a-zA-Z]+ ;
+DeclarationStart: 'initialize' ;
+End: 'end' ;
+ScriptStart: 'script' ;
 
-ScriptStart: 'script' '\n' ;
-ScriptEnd: 'end' ;
+Identifier: [a-zA-Z] [a-zA-Z0-9]* ;
 
-ChoiceStart: '<' ;
-ChoiceEnd: '>' ;
+ChoiceStart: '[' ;
+ChoiceEnd: ']' ;
 
-Operator: [+-*/] ;
+Operator: '+' | '-' | '/' | '*' ;
 RelationalOperator: '<=' | '>=' | '<' | '>' | '==' | '!=' ;
 
 Integer: [1-9] [0-9]* ;
-String: '\"' . '\"' ;
 
 Or: '|' ;
 And: '&' ;
@@ -38,7 +37,7 @@ game:
 	declarationSection scriptSection ;
 	
 declarationSection:
-	DeclarationStart LP identifierList RP DeclarationEnd ;
+	DeclarationStart LP identifierList RP End ;
 
 identifierList:
 	Identifier ',' identifierList
@@ -46,15 +45,17 @@ identifierList:
 	;
 	
 scriptSection:
-	ScriptStart textLineList ScriptEnd ;
+	ScriptStart textLineList End ;
 	
 textLineList:
-	textLine '\n' textLineList
+	textLine textLineList
 	| textLine
 	;
 	
 textLine:
-	LP karmaExpression RP Identifier ':' line ;
+	LP karmaExpression RP Identifier ':' line
+	| Identifier ':' line
+	;
 	
 line:
 	choicePrompt
@@ -80,7 +81,7 @@ karmaOperationList:
 	;
 	
 karmaOperation:
-	LP Identifier Operator Identifier RP ;
+	LP Identifier Operator Integer RP ;
 	
 karmaExpression:
 	karmaTerm

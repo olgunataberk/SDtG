@@ -2,4 +2,5 @@ bin/
 *.strg
 WrittenStuff/
 thirdpartylib/S*
-
+thirdpartylib/*.txt
+thirdpartylib/*~

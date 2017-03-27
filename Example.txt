@@ -1,0 +1,10 @@
+initialize
+(karma1,karma2)
+end
+script
+MehmetTan:"why do you suffer?"
+MehmetTan: ["Do you like monkeys?" "Yes":(karma1+50), "No":(karma1-50)]
+(karma1>50)Me:"cuz its hard"
+(karma1<50&karma2>100)Me:"and its so hard"
+end
+
