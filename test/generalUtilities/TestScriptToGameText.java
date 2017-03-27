@@ -7,18 +7,18 @@ import java.util.ArrayList;
 import org.junit.Before;
 import org.junit.Test;
 
-import parsing.TextLineParser;
-import textUsage.TextLine;
+import gameObjects.TextLine;
+import parsing.GameParser;
 
 public class TestScriptToGameText {
 
     ScriptToGameText testObj;
-    TextLineParser helperObj;
+    GameParser helperObj;
 
     @Before
     public void setUp()
     {
-        helperObj = new TextLineParser();
+        helperObj = new GameParser();
         testObj = new ScriptToGameText(helperObj);
     }
 

@@ -5,8 +5,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import parsing.TextLineParser;
-import textUsage.TextLine;
+import gameObjects.TextLine;
+import parsing.GameParser;
 
 /**
  * Utility for turning text into game.
@@ -14,9 +14,9 @@ import textUsage.TextLine;
  */
 public class ScriptToGameText {
 
-    private TextLineParser tlp;
+    private GameParser tlp;
 
-    public ScriptToGameText(TextLineParser tlp)
+    public ScriptToGameText(GameParser tlp)
     {
         this.tlp = tlp;
     }

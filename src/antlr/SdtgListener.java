@@ -1,4 +1,5 @@
 // Generated from Sdtg.g4 by ANTLR 4.6
+
 package antlr;
 
 import org.antlr.v4.runtime.tree.ParseTreeListener;
@@ -59,15 +60,29 @@ public interface SdtgListener extends ParseTreeListener {
 	 */
 	void exitTextLineList(SdtgParser.TextLineListContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link SdtgParser#textLine}.
+	 * Enter a parse tree produced by the {@code conditionalTextLine}
+	 * labeled alternative in {@link SdtgParser#textLine}.
 	 * @param ctx the parse tree
 	 */
-	void enterTextLine(SdtgParser.TextLineContext ctx);
+	void enterConditionalTextLine(SdtgParser.ConditionalTextLineContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link SdtgParser#textLine}.
+	 * Exit a parse tree produced by the {@code conditionalTextLine}
+	 * labeled alternative in {@link SdtgParser#textLine}.
 	 * @param ctx the parse tree
 	 */
-	void exitTextLine(SdtgParser.TextLineContext ctx);
+	void exitConditionalTextLine(SdtgParser.ConditionalTextLineContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code regularTextLine}
+	 * labeled alternative in {@link SdtgParser#textLine}.
+	 * @param ctx the parse tree
+	 */
+	void enterRegularTextLine(SdtgParser.RegularTextLineContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code regularTextLine}
+	 * labeled alternative in {@link SdtgParser#textLine}.
+	 * @param ctx the parse tree
+	 */
+	void exitRegularTextLine(SdtgParser.RegularTextLineContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link SdtgParser#line}.
 	 * @param ctx the parse tree

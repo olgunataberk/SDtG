@@ -1,4 +1,4 @@
-package textUsage;
+package gameObjects;
 
 import preferences.Config;
 

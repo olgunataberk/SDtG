@@ -1,37 +1,30 @@
 package parsing;
 
+import antlr.SdtgLexer;
+import gameObjects.NpcTextLine;
+import gameObjects.PlayerTextLine;
+import gameObjects.TextLine;
+
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
-import textUsage.NpcTextLine;
-import textUsage.PlayerTextLine;
-import textUsage.TextLine;
 
 /**
  * Turn text input into rich TextLine objects.
  *
  */
-public class TextLineParser {
+public class GameParser {
 
     /*
     public static void run(InputStream inputStream) throws Exception {
         ANTLRInputStream input = new ANTLRInputStream(inputStream);
-        Java8Lexer lexer = new Java8Lexer(input);
+        SdtgLexer lexer = new SdtgLexer(input);
         CommonTokenStream tokens = new CommonTokenStream(lexer);
-        Java8Parser parser = new Java8Parser(tokens);
+        SdtgParser parser = new SdtgParser(tokens);
         ParseTree tree = parser.compilationUnit();
         ParseTreeWalker walker = new ParseTreeWalker();
-        MethodIssueDetector listener = new MethodIssueDetector();
+        ParseTreeListener listener = new ParseTreeListener();
         walker.walk(listener, tree);
 
-
-        System.out.println("Never called");
-        // Output.
-
-        System.out.println();
-
-        System.out.println("Called but not declared");
-        // Output.
     }
     */
     /**

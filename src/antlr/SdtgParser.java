@@ -1,4 +1,5 @@
 // Generated from Sdtg.g4 by ANTLR 4.6
+
 package antlr;
 
 import org.antlr.v4.runtime.atn.*;
@@ -18,10 +19,9 @@ public class SdtgParser extends Parser {
 	protected static final PredictionContextCache _sharedContextCache =
 		new PredictionContextCache();
 	public static final int
-		T__0=1, T__1=2, T__2=3, Whitespace=4, DeclarationStart=5, DeclarationEnd=6, 
-		Identifier=7, ScriptStart=8, ScriptEnd=9, ChoiceStart=10, ChoiceEnd=11, 
-		Operator=12, RelationalOperator=13, Integer=14, String=15, Or=16, And=17, 
-		Not=18, LP=19, RP=20;
+		T__0=1, T__1=2, Whitespace=3, String=4, DeclarationStart=5, End=6, ScriptStart=7, 
+		Identifier=8, ChoiceStart=9, ChoiceEnd=10, Operator=11, RelationalOperator=12, 
+		Integer=13, Or=14, And=15, Not=16, LP=17, RP=18;
 	public static final int
 		RULE_game = 0, RULE_declarationSection = 1, RULE_identifierList = 2, RULE_scriptSection = 3, 
 		RULE_textLineList = 4, RULE_textLine = 5, RULE_line = 6, RULE_choicePrompt = 7, 
@@ -36,14 +36,13 @@ public class SdtgParser extends Parser {
 	};
 
 	private static final String[] _LITERAL_NAMES = {
-		null, "','", "'\n'", "':'", null, null, null, null, null, null, "'<'", 
-		"'>'", null, null, null, null, "'|'", "'&'", "'!'", "'('", "')'"
+		null, "','", "':'", null, null, "'initialize'", "'end'", "'script'", null, 
+		"'['", "']'", null, null, null, "'|'", "'&'", "'!'", "'('", "')'"
 	};
 	private static final String[] _SYMBOLIC_NAMES = {
-		null, null, null, null, "Whitespace", "DeclarationStart", "DeclarationEnd", 
-		"Identifier", "ScriptStart", "ScriptEnd", "ChoiceStart", "ChoiceEnd", 
-		"Operator", "RelationalOperator", "Integer", "String", "Or", "And", "Not", 
-		"LP", "RP"
+		null, null, null, "Whitespace", "String", "DeclarationStart", "End", "ScriptStart", 
+		"Identifier", "ChoiceStart", "ChoiceEnd", "Operator", "RelationalOperator", 
+		"Integer", "Or", "And", "Not", "LP", "RP"
 	};
 	public static final Vocabulary VOCABULARY = new VocabularyImpl(_LITERAL_NAMES, _SYMBOLIC_NAMES);
 
@@ -145,7 +144,7 @@ public class SdtgParser extends Parser {
 			return getRuleContext(IdentifierListContext.class,0);
 		}
 		public TerminalNode RP() { return getToken(SdtgParser.RP, 0); }
-		public TerminalNode DeclarationEnd() { return getToken(SdtgParser.DeclarationEnd, 0); }
+		public TerminalNode End() { return getToken(SdtgParser.End, 0); }
 		public DeclarationSectionContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -175,7 +174,7 @@ public class SdtgParser extends Parser {
 			setState(40);
 			match(RP);
 			setState(41);
-			match(DeclarationEnd);
+			match(End);
 			}
 		}
 		catch (RecognitionException re) {
@@ -251,7 +250,7 @@ public class SdtgParser extends Parser {
 		public TextLineListContext textLineList() {
 			return getRuleContext(TextLineListContext.class,0);
 		}
-		public TerminalNode ScriptEnd() { return getToken(SdtgParser.ScriptEnd, 0); }
+		public TerminalNode End() { return getToken(SdtgParser.End, 0); }
 		public ScriptSectionContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -277,7 +276,7 @@ public class SdtgParser extends Parser {
 			setState(50);
 			textLineList();
 			setState(51);
-			match(ScriptEnd);
+			match(End);
 			}
 		}
 		catch (RecognitionException re) {
@@ -316,7 +315,7 @@ public class SdtgParser extends Parser {
 		TextLineListContext _localctx = new TextLineListContext(_ctx, getState());
 		enterRule(_localctx, 8, RULE_textLineList);
 		try {
-			setState(58);
+			setState(57);
 			_errHandler.sync(this);
 			switch ( getInterpreter().adaptivePredict(_input,1,_ctx) ) {
 			case 1:
@@ -325,15 +324,13 @@ public class SdtgParser extends Parser {
 				setState(53);
 				textLine();
 				setState(54);
-				match(T__1);
-				setState(55);
 				textLineList();
 				}
 				break;
 			case 2:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(57);
+				setState(56);
 				textLine();
 				}
 				break;
@@ -351,6 +348,32 @@ public class SdtgParser extends Parser {
 	}
 
 	public static class TextLineContext extends ParserRuleContext {
+		public TextLineContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
+		}
+		@Override public int getRuleIndex() { return RULE_textLine; }
+	 
+		public TextLineContext() { }
+		public void copyFrom(TextLineContext ctx) {
+			super.copyFrom(ctx);
+		}
+	}
+	public static class RegularTextLineContext extends TextLineContext {
+		public TerminalNode Identifier() { return getToken(SdtgParser.Identifier, 0); }
+		public LineContext line() {
+			return getRuleContext(LineContext.class,0);
+		}
+		public RegularTextLineContext(TextLineContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof SdtgListener ) ((SdtgListener)listener).enterRegularTextLine(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof SdtgListener ) ((SdtgListener)listener).exitRegularTextLine(this);
+		}
+	}
+	public static class ConditionalTextLineContext extends TextLineContext {
 		public TerminalNode LP() { return getToken(SdtgParser.LP, 0); }
 		public KarmaExpressionContext karmaExpression() {
 			return getRuleContext(KarmaExpressionContext.class,0);
@@ -360,17 +383,14 @@ public class SdtgParser extends Parser {
 		public LineContext line() {
 			return getRuleContext(LineContext.class,0);
 		}
-		public TextLineContext(ParserRuleContext parent, int invokingState) {
-			super(parent, invokingState);
-		}
-		@Override public int getRuleIndex() { return RULE_textLine; }
+		public ConditionalTextLineContext(TextLineContext ctx) { copyFrom(ctx); }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof SdtgListener ) ((SdtgListener)listener).enterTextLine(this);
+			if ( listener instanceof SdtgListener ) ((SdtgListener)listener).enterConditionalTextLine(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof SdtgListener ) ((SdtgListener)listener).exitTextLine(this);
+			if ( listener instanceof SdtgListener ) ((SdtgListener)listener).exitConditionalTextLine(this);
 		}
 	}
 
@@ -378,20 +398,41 @@ public class SdtgParser extends Parser {
 		TextLineContext _localctx = new TextLineContext(_ctx, getState());
 		enterRule(_localctx, 10, RULE_textLine);
 		try {
-			enterOuterAlt(_localctx, 1);
-			{
-			setState(60);
-			match(LP);
-			setState(61);
-			karmaExpression(0);
-			setState(62);
-			match(RP);
-			setState(63);
-			match(Identifier);
-			setState(64);
-			match(T__2);
-			setState(65);
-			line();
+			setState(69);
+			_errHandler.sync(this);
+			switch (_input.LA(1)) {
+			case LP:
+				_localctx = new ConditionalTextLineContext(_localctx);
+				enterOuterAlt(_localctx, 1);
+				{
+				setState(59);
+				match(LP);
+				setState(60);
+				karmaExpression(0);
+				setState(61);
+				match(RP);
+				setState(62);
+				match(Identifier);
+				setState(63);
+				match(T__1);
+				setState(64);
+				line();
+				}
+				break;
+			case Identifier:
+				_localctx = new RegularTextLineContext(_localctx);
+				enterOuterAlt(_localctx, 2);
+				{
+				setState(66);
+				match(Identifier);
+				setState(67);
+				match(T__1);
+				setState(68);
+				line();
+				}
+				break;
+			default:
+				throw new NoViableAltException(this);
 			}
 		}
 		catch (RecognitionException re) {
@@ -428,20 +469,20 @@ public class SdtgParser extends Parser {
 		LineContext _localctx = new LineContext(_ctx, getState());
 		enterRule(_localctx, 12, RULE_line);
 		try {
-			setState(69);
+			setState(73);
 			_errHandler.sync(this);
 			switch (_input.LA(1)) {
 			case ChoiceStart:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(67);
+				setState(71);
 				choicePrompt();
 				}
 				break;
 			case String:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(68);
+				setState(72);
 				match(String);
 				}
 				break;
@@ -487,13 +528,13 @@ public class SdtgParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(71);
+			setState(75);
 			match(ChoiceStart);
-			setState(72);
+			setState(76);
 			match(String);
-			setState(73);
+			setState(77);
 			choiceList();
-			setState(74);
+			setState(78);
 			match(ChoiceEnd);
 			}
 		}
@@ -533,24 +574,24 @@ public class SdtgParser extends Parser {
 		ChoiceListContext _localctx = new ChoiceListContext(_ctx, getState());
 		enterRule(_localctx, 16, RULE_choiceList);
 		try {
-			setState(81);
+			setState(85);
 			_errHandler.sync(this);
-			switch ( getInterpreter().adaptivePredict(_input,3,_ctx) ) {
+			switch ( getInterpreter().adaptivePredict(_input,4,_ctx) ) {
 			case 1:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(76);
+				setState(80);
 				choiceExpression();
-				setState(77);
+				setState(81);
 				match(T__0);
-				setState(78);
+				setState(82);
 				choiceList();
 				}
 				break;
 			case 2:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(80);
+				setState(84);
 				choiceExpression();
 				}
 				break;
@@ -590,24 +631,24 @@ public class SdtgParser extends Parser {
 		ChoiceExpressionContext _localctx = new ChoiceExpressionContext(_ctx, getState());
 		enterRule(_localctx, 18, RULE_choiceExpression);
 		try {
-			setState(87);
+			setState(91);
 			_errHandler.sync(this);
-			switch ( getInterpreter().adaptivePredict(_input,4,_ctx) ) {
+			switch ( getInterpreter().adaptivePredict(_input,5,_ctx) ) {
 			case 1:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(83);
+				setState(87);
 				match(String);
-				setState(84);
-				match(T__2);
-				setState(85);
+				setState(88);
+				match(T__1);
+				setState(89);
 				karmaOperationList();
 				}
 				break;
 			case 2:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(86);
+				setState(90);
 				match(String);
 				}
 				break;
@@ -649,22 +690,22 @@ public class SdtgParser extends Parser {
 		KarmaOperationListContext _localctx = new KarmaOperationListContext(_ctx, getState());
 		enterRule(_localctx, 20, RULE_karmaOperationList);
 		try {
-			setState(93);
+			setState(97);
 			_errHandler.sync(this);
-			switch ( getInterpreter().adaptivePredict(_input,5,_ctx) ) {
+			switch ( getInterpreter().adaptivePredict(_input,6,_ctx) ) {
 			case 1:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(89);
+				setState(93);
 				karmaOperation();
-				setState(90);
+				setState(94);
 				karmaOperationList();
 				}
 				break;
 			case 2:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(92);
+				setState(96);
 				karmaOperation();
 				}
 				break;
@@ -683,11 +724,9 @@ public class SdtgParser extends Parser {
 
 	public static class KarmaOperationContext extends ParserRuleContext {
 		public TerminalNode LP() { return getToken(SdtgParser.LP, 0); }
-		public List<TerminalNode> Identifier() { return getTokens(SdtgParser.Identifier); }
-		public TerminalNode Identifier(int i) {
-			return getToken(SdtgParser.Identifier, i);
-		}
+		public TerminalNode Identifier() { return getToken(SdtgParser.Identifier, 0); }
 		public TerminalNode Operator() { return getToken(SdtgParser.Operator, 0); }
+		public TerminalNode Integer() { return getToken(SdtgParser.Integer, 0); }
 		public TerminalNode RP() { return getToken(SdtgParser.RP, 0); }
 		public KarmaOperationContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
@@ -709,15 +748,15 @@ public class SdtgParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(95);
-			match(LP);
-			setState(96);
-			match(Identifier);
-			setState(97);
-			match(Operator);
-			setState(98);
-			match(Identifier);
 			setState(99);
+			match(LP);
+			setState(100);
+			match(Identifier);
+			setState(101);
+			match(Operator);
+			setState(102);
+			match(Integer);
+			setState(103);
 			match(RP);
 			}
 		}
@@ -770,13 +809,13 @@ public class SdtgParser extends Parser {
 			enterOuterAlt(_localctx, 1);
 			{
 			{
-			setState(102);
+			setState(106);
 			karmaTerm(0);
 			}
 			_ctx.stop = _input.LT(-1);
-			setState(109);
+			setState(113);
 			_errHandler.sync(this);
-			_alt = getInterpreter().adaptivePredict(_input,6,_ctx);
+			_alt = getInterpreter().adaptivePredict(_input,7,_ctx);
 			while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER ) {
 				if ( _alt==1 ) {
 					if ( _parseListeners!=null ) triggerExitRuleEvent();
@@ -785,18 +824,18 @@ public class SdtgParser extends Parser {
 					{
 					_localctx = new KarmaExpressionContext(_parentctx, _parentState);
 					pushNewRecursionContext(_localctx, _startState, RULE_karmaExpression);
-					setState(104);
+					setState(108);
 					if (!(precpred(_ctx, 1))) throw new FailedPredicateException(this, "precpred(_ctx, 1)");
-					setState(105);
+					setState(109);
 					match(Or);
-					setState(106);
+					setState(110);
 					karmaTerm(0);
 					}
 					} 
 				}
-				setState(111);
+				setState(115);
 				_errHandler.sync(this);
-				_alt = getInterpreter().adaptivePredict(_input,6,_ctx);
+				_alt = getInterpreter().adaptivePredict(_input,7,_ctx);
 			}
 			}
 		}
@@ -849,13 +888,13 @@ public class SdtgParser extends Parser {
 			enterOuterAlt(_localctx, 1);
 			{
 			{
-			setState(113);
+			setState(117);
 			karmaFactor();
 			}
 			_ctx.stop = _input.LT(-1);
-			setState(120);
+			setState(124);
 			_errHandler.sync(this);
-			_alt = getInterpreter().adaptivePredict(_input,7,_ctx);
+			_alt = getInterpreter().adaptivePredict(_input,8,_ctx);
 			while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER ) {
 				if ( _alt==1 ) {
 					if ( _parseListeners!=null ) triggerExitRuleEvent();
@@ -864,18 +903,18 @@ public class SdtgParser extends Parser {
 					{
 					_localctx = new KarmaTermContext(_parentctx, _parentState);
 					pushNewRecursionContext(_localctx, _startState, RULE_karmaTerm);
-					setState(115);
+					setState(119);
 					if (!(precpred(_ctx, 1))) throw new FailedPredicateException(this, "precpred(_ctx, 1)");
-					setState(116);
+					setState(120);
 					match(And);
-					setState(117);
+					setState(121);
 					karmaFactor();
 					}
 					} 
 				}
-				setState(122);
+				setState(126);
 				_errHandler.sync(this);
-				_alt = getInterpreter().adaptivePredict(_input,7,_ctx);
+				_alt = getInterpreter().adaptivePredict(_input,8,_ctx);
 			}
 			}
 		}
@@ -913,23 +952,23 @@ public class SdtgParser extends Parser {
 		KarmaFactorContext _localctx = new KarmaFactorContext(_ctx, getState());
 		enterRule(_localctx, 28, RULE_karmaFactor);
 		try {
-			setState(126);
+			setState(130);
 			_errHandler.sync(this);
 			switch (_input.LA(1)) {
 			case Identifier:
 			case LP:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(123);
+				setState(127);
 				karmaPrimary();
 				}
 				break;
 			case Not:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(124);
+				setState(128);
 				match(Not);
-				setState(125);
+				setState(129);
 				karmaPrimary();
 				}
 				break;
@@ -975,24 +1014,24 @@ public class SdtgParser extends Parser {
 		KarmaPrimaryContext _localctx = new KarmaPrimaryContext(_ctx, getState());
 		enterRule(_localctx, 30, RULE_karmaPrimary);
 		try {
-			setState(133);
+			setState(137);
 			_errHandler.sync(this);
 			switch (_input.LA(1)) {
 			case Identifier:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(128);
+				setState(132);
 				karmaPredicate();
 				}
 				break;
 			case LP:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(129);
+				setState(133);
 				match(LP);
-				setState(130);
+				setState(134);
 				karmaExpression(0);
-				setState(131);
+				setState(135);
 				match(RP);
 				}
 				break;
@@ -1035,11 +1074,11 @@ public class SdtgParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(135);
+			setState(139);
 			match(Identifier);
-			setState(136);
+			setState(140);
 			match(RelationalOperator);
-			setState(137);
+			setState(141);
 			match(Integer);
 			}
 		}
@@ -1079,41 +1118,43 @@ public class SdtgParser extends Parser {
 	}
 
 	public static final String _serializedATN =
-		"\3\u0430\ud6d1\u8206\uad2d\u4417\uaef1\u8d80\uaadd\3\26\u008e\4\2\t\2"+
+		"\3\u0430\ud6d1\u8206\uad2d\u4417\uaef1\u8d80\uaadd\3\24\u0092\4\2\t\2"+
 		"\4\3\t\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7\4\b\t\b\4\t\t\t\4\n\t\n\4\13"+
 		"\t\13\4\f\t\f\4\r\t\r\4\16\t\16\4\17\t\17\4\20\t\20\4\21\t\21\4\22\t\22"+
 		"\3\2\3\2\3\2\3\3\3\3\3\3\3\3\3\3\3\3\3\4\3\4\3\4\3\4\5\4\62\n\4\3\5\3"+
-		"\5\3\5\3\5\3\6\3\6\3\6\3\6\3\6\5\6=\n\6\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3"+
-		"\b\3\b\5\bH\n\b\3\t\3\t\3\t\3\t\3\t\3\n\3\n\3\n\3\n\3\n\5\nT\n\n\3\13"+
-		"\3\13\3\13\3\13\5\13Z\n\13\3\f\3\f\3\f\3\f\5\f`\n\f\3\r\3\r\3\r\3\r\3"+
-		"\r\3\r\3\16\3\16\3\16\3\16\3\16\3\16\7\16n\n\16\f\16\16\16q\13\16\3\17"+
-		"\3\17\3\17\3\17\3\17\3\17\7\17y\n\17\f\17\16\17|\13\17\3\20\3\20\3\20"+
-		"\5\20\u0081\n\20\3\21\3\21\3\21\3\21\3\21\5\21\u0088\n\21\3\22\3\22\3"+
-		"\22\3\22\3\22\2\4\32\34\23\2\4\6\b\n\f\16\20\22\24\26\30\32\34\36 \"\2"+
-		"\2\u0086\2$\3\2\2\2\4\'\3\2\2\2\6\61\3\2\2\2\b\63\3\2\2\2\n<\3\2\2\2\f"+
-		">\3\2\2\2\16G\3\2\2\2\20I\3\2\2\2\22S\3\2\2\2\24Y\3\2\2\2\26_\3\2\2\2"+
-		"\30a\3\2\2\2\32g\3\2\2\2\34r\3\2\2\2\36\u0080\3\2\2\2 \u0087\3\2\2\2\""+
-		"\u0089\3\2\2\2$%\5\4\3\2%&\5\b\5\2&\3\3\2\2\2\'(\7\7\2\2()\7\25\2\2)*"+
-		"\5\6\4\2*+\7\26\2\2+,\7\b\2\2,\5\3\2\2\2-.\7\t\2\2./\7\3\2\2/\62\5\6\4"+
-		"\2\60\62\7\t\2\2\61-\3\2\2\2\61\60\3\2\2\2\62\7\3\2\2\2\63\64\7\n\2\2"+
-		"\64\65\5\n\6\2\65\66\7\13\2\2\66\t\3\2\2\2\678\5\f\7\289\7\4\2\29:\5\n"+
-		"\6\2:=\3\2\2\2;=\5\f\7\2<\67\3\2\2\2<;\3\2\2\2=\13\3\2\2\2>?\7\25\2\2"+
-		"?@\5\32\16\2@A\7\26\2\2AB\7\t\2\2BC\7\5\2\2CD\5\16\b\2D\r\3\2\2\2EH\5"+
-		"\20\t\2FH\7\21\2\2GE\3\2\2\2GF\3\2\2\2H\17\3\2\2\2IJ\7\f\2\2JK\7\21\2"+
-		"\2KL\5\22\n\2LM\7\r\2\2M\21\3\2\2\2NO\5\24\13\2OP\7\3\2\2PQ\5\22\n\2Q"+
-		"T\3\2\2\2RT\5\24\13\2SN\3\2\2\2SR\3\2\2\2T\23\3\2\2\2UV\7\21\2\2VW\7\5"+
-		"\2\2WZ\5\26\f\2XZ\7\21\2\2YU\3\2\2\2YX\3\2\2\2Z\25\3\2\2\2[\\\5\30\r\2"+
-		"\\]\5\26\f\2]`\3\2\2\2^`\5\30\r\2_[\3\2\2\2_^\3\2\2\2`\27\3\2\2\2ab\7"+
-		"\25\2\2bc\7\t\2\2cd\7\16\2\2de\7\t\2\2ef\7\26\2\2f\31\3\2\2\2gh\b\16\1"+
-		"\2hi\5\34\17\2io\3\2\2\2jk\f\3\2\2kl\7\22\2\2ln\5\34\17\2mj\3\2\2\2nq"+
-		"\3\2\2\2om\3\2\2\2op\3\2\2\2p\33\3\2\2\2qo\3\2\2\2rs\b\17\1\2st\5\36\20"+
-		"\2tz\3\2\2\2uv\f\3\2\2vw\7\23\2\2wy\5\36\20\2xu\3\2\2\2y|\3\2\2\2zx\3"+
-		"\2\2\2z{\3\2\2\2{\35\3\2\2\2|z\3\2\2\2}\u0081\5 \21\2~\177\7\24\2\2\177"+
-		"\u0081\5 \21\2\u0080}\3\2\2\2\u0080~\3\2\2\2\u0081\37\3\2\2\2\u0082\u0088"+
-		"\5\"\22\2\u0083\u0084\7\25\2\2\u0084\u0085\5\32\16\2\u0085\u0086\7\26"+
-		"\2\2\u0086\u0088\3\2\2\2\u0087\u0082\3\2\2\2\u0087\u0083\3\2\2\2\u0088"+
-		"!\3\2\2\2\u0089\u008a\7\t\2\2\u008a\u008b\7\17\2\2\u008b\u008c\7\20\2"+
-		"\2\u008c#\3\2\2\2\f\61<GSY_oz\u0080\u0087";
+		"\5\3\5\3\5\3\6\3\6\3\6\3\6\5\6<\n\6\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3"+
+		"\7\3\7\5\7H\n\7\3\b\3\b\5\bL\n\b\3\t\3\t\3\t\3\t\3\t\3\n\3\n\3\n\3\n\3"+
+		"\n\5\nX\n\n\3\13\3\13\3\13\3\13\5\13^\n\13\3\f\3\f\3\f\3\f\5\fd\n\f\3"+
+		"\r\3\r\3\r\3\r\3\r\3\r\3\16\3\16\3\16\3\16\3\16\3\16\7\16r\n\16\f\16\16"+
+		"\16u\13\16\3\17\3\17\3\17\3\17\3\17\3\17\7\17}\n\17\f\17\16\17\u0080\13"+
+		"\17\3\20\3\20\3\20\5\20\u0085\n\20\3\21\3\21\3\21\3\21\3\21\5\21\u008c"+
+		"\n\21\3\22\3\22\3\22\3\22\3\22\2\4\32\34\23\2\4\6\b\n\f\16\20\22\24\26"+
+		"\30\32\34\36 \"\2\2\u008b\2$\3\2\2\2\4\'\3\2\2\2\6\61\3\2\2\2\b\63\3\2"+
+		"\2\2\n;\3\2\2\2\fG\3\2\2\2\16K\3\2\2\2\20M\3\2\2\2\22W\3\2\2\2\24]\3\2"+
+		"\2\2\26c\3\2\2\2\30e\3\2\2\2\32k\3\2\2\2\34v\3\2\2\2\36\u0084\3\2\2\2"+
+		" \u008b\3\2\2\2\"\u008d\3\2\2\2$%\5\4\3\2%&\5\b\5\2&\3\3\2\2\2\'(\7\7"+
+		"\2\2()\7\23\2\2)*\5\6\4\2*+\7\24\2\2+,\7\b\2\2,\5\3\2\2\2-.\7\n\2\2./"+
+		"\7\3\2\2/\62\5\6\4\2\60\62\7\n\2\2\61-\3\2\2\2\61\60\3\2\2\2\62\7\3\2"+
+		"\2\2\63\64\7\t\2\2\64\65\5\n\6\2\65\66\7\b\2\2\66\t\3\2\2\2\678\5\f\7"+
+		"\289\5\n\6\29<\3\2\2\2:<\5\f\7\2;\67\3\2\2\2;:\3\2\2\2<\13\3\2\2\2=>\7"+
+		"\23\2\2>?\5\32\16\2?@\7\24\2\2@A\7\n\2\2AB\7\4\2\2BC\5\16\b\2CH\3\2\2"+
+		"\2DE\7\n\2\2EF\7\4\2\2FH\5\16\b\2G=\3\2\2\2GD\3\2\2\2H\r\3\2\2\2IL\5\20"+
+		"\t\2JL\7\6\2\2KI\3\2\2\2KJ\3\2\2\2L\17\3\2\2\2MN\7\13\2\2NO\7\6\2\2OP"+
+		"\5\22\n\2PQ\7\f\2\2Q\21\3\2\2\2RS\5\24\13\2ST\7\3\2\2TU\5\22\n\2UX\3\2"+
+		"\2\2VX\5\24\13\2WR\3\2\2\2WV\3\2\2\2X\23\3\2\2\2YZ\7\6\2\2Z[\7\4\2\2["+
+		"^\5\26\f\2\\^\7\6\2\2]Y\3\2\2\2]\\\3\2\2\2^\25\3\2\2\2_`\5\30\r\2`a\5"+
+		"\26\f\2ad\3\2\2\2bd\5\30\r\2c_\3\2\2\2cb\3\2\2\2d\27\3\2\2\2ef\7\23\2"+
+		"\2fg\7\n\2\2gh\7\r\2\2hi\7\17\2\2ij\7\24\2\2j\31\3\2\2\2kl\b\16\1\2lm"+
+		"\5\34\17\2ms\3\2\2\2no\f\3\2\2op\7\20\2\2pr\5\34\17\2qn\3\2\2\2ru\3\2"+
+		"\2\2sq\3\2\2\2st\3\2\2\2t\33\3\2\2\2us\3\2\2\2vw\b\17\1\2wx\5\36\20\2"+
+		"x~\3\2\2\2yz\f\3\2\2z{\7\21\2\2{}\5\36\20\2|y\3\2\2\2}\u0080\3\2\2\2~"+
+		"|\3\2\2\2~\177\3\2\2\2\177\35\3\2\2\2\u0080~\3\2\2\2\u0081\u0085\5 \21"+
+		"\2\u0082\u0083\7\22\2\2\u0083\u0085\5 \21\2\u0084\u0081\3\2\2\2\u0084"+
+		"\u0082\3\2\2\2\u0085\37\3\2\2\2\u0086\u008c\5\"\22\2\u0087\u0088\7\23"+
+		"\2\2\u0088\u0089\5\32\16\2\u0089\u008a\7\24\2\2\u008a\u008c\3\2\2\2\u008b"+
+		"\u0086\3\2\2\2\u008b\u0087\3\2\2\2\u008c!\3\2\2\2\u008d\u008e\7\n\2\2"+
+		"\u008e\u008f\7\16\2\2\u008f\u0090\7\17\2\2\u0090#\3\2\2\2\r\61;GKW]cs"+
+		"~\u0084\u008b";
 	public static final ATN _ATN =
 		new ATNDeserializer().deserialize(_serializedATN.toCharArray());
 	static {

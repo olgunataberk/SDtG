@@ -1,4 +1,5 @@
 // Generated from Sdtg.g4 by ANTLR 4.6
+
 package antlr;
 
 import org.antlr.v4.runtime.ParserRuleContext;
@@ -76,13 +77,25 @@ public class SdtgBaseListener implements SdtgListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterTextLine(SdtgParser.TextLineContext ctx) { }
+	@Override public void enterConditionalTextLine(SdtgParser.ConditionalTextLineContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitTextLine(SdtgParser.TextLineContext ctx) { }
+	@Override public void exitConditionalTextLine(SdtgParser.ConditionalTextLineContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterRegularTextLine(SdtgParser.RegularTextLineContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitRegularTextLine(SdtgParser.RegularTextLineContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *

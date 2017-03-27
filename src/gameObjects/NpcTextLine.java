@@ -1,4 +1,4 @@
-package textUsage;
+package gameObjects;
 
 public class NpcTextLine extends TextLine {
 

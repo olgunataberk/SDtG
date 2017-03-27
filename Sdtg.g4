@@ -4,7 +4,7 @@
 
 grammar Sdtg;
 
-Whitespace: [ \t\n]+ -> skip ;
+Whitespace: [ \t\n\r]+ -> skip ;
 
 String: '"' ~["]* '"';
 
@@ -53,8 +53,8 @@ textLineList:
 	;
 	
 textLine:
-	LP karmaExpression RP Identifier ':' line
-	| Identifier ':' line
+	LP karmaExpression RP Identifier ':' line #conditionalTextLine
+	| Identifier ':' line #regularTextLine
 	;
 	
 line:
