@@ -12,6 +12,11 @@ public class TextLine {
     protected String subject;
     protected String line;
     
+    public TextLine()
+    {
+        karmaTrigger = null;
+    }
+    
     public String speak()
     {
         return this.subject + ": " + this.line;
