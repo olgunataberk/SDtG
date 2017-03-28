@@ -7,4 +7,6 @@ A text-based-sci-fi-action-adventure-rpg game(or engine).
 4. You can either: 
    1. clone the repo `git clone https://github.com/olgunataberk/SDtG`,  
    2. or add it as a remote repository and then fetch/pull from there `git remote add <reference_name> https://github.com/olgunataberk/SDtG` followed by `git pull <reference_name> master`.
-5. Now you are ready to work with the project on your favourite IDE(although I strongly suggest using Eclipse).
+5. Download [Antlr](http://www.antlr.org/) and set it as your projects dependency.
+   - In Eclipse: Project Properties -> Java Build Path -> Libraries -> Add JARs -> Select the jar you downloaded from antlr.org.
+6. Now you are ready to work with the project on your favourite IDE(although I strongly suggest using Eclipse).
