@@ -1,8 +1,13 @@
 package parsing;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 import antlr.SdtgBaseListener;
 import antlr.SdtgParser;
 import antlr.SdtgParser.ChoiceExpressionContext;
+import antlr.SdtgParser.DeclarationSectionContext;
+import antlr.SdtgParser.IdentifierListContext;
 import antlr.SdtgParser.KarmaOperationContext;
 import gameObjects.ChoicePrompt;
 import gameObjects.Game;
@@ -11,31 +16,43 @@ import gameObjects.PlayerTextLine;
 import gameObjects.TextLine;
 import karmaComputation.EvaluationTree;
 import karmaComputation.KarmaOperation;
+import memory.Memory;
 
+/**
+ * Fills a given empty "game" object according to the script input.
+ */
 public class ParseTreeListener extends SdtgBaseListener {
 
     private boolean initialExpression;
     private boolean choicePromptTrigger;
-
+    
     private EvaluationTree evalTree;
     private EvaluationTree.Node pNode;
     private TextLine textLine;
     private ChoicePrompt.Choice choice;
     private String subject;
     private Game game;
-
+    private Memory memo;
+    
     public ParseTreeListener(Game game)
     {
         super();
         initialExpression = false;
         evalTree = null;
         this.game = game;
+        memo = new Memory();
     }
 
     @Override
+    public void enterIdentifierList(IdentifierListContext ctx)
+    {
+        memo.addVariable(ctx.getChild(0).getText());
+    }
+    
+    @Override
     public void exitGame(SdtgParser.GameContext ctx)
     {
-
+        Logger.getGlobal().log(Level.INFO,"ParseTreeListener finished it's job.");
     }
 
     @Override

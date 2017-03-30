@@ -53,13 +53,14 @@ public class EvaluationTree{
         }
         
     }
-    
-    private static Memory lookUp;
+
+    private Memory memRef;
     private Node root;
     
     public EvaluationTree()
     {
         root = new Node();
+        memRef = null;
     }
     
     public Node getRoot()
@@ -67,19 +68,82 @@ public class EvaluationTree{
         return root;
     }
     
-    /**
-     * set the variable scope of computation.
-     * @param mem Memory instance
-     */
-    public static void setMemory(Memory mem)
+    public boolean evaluate(Memory mem)
     {
-        lookUp = mem;
+        memRef = mem;
+        boolean temp = evaluateTree(root.children.get(0));
+        memRef = null;
+        return temp;
     }
     
-    public boolean evaluate()
+    private boolean evaluateTree(Node v)
     {
-        
+        if(v.type == Node.OPERATOR && v.children.size() > 1)
+            return evaluateExpression(evaluateTree(v.children.get(0)),
+                    evaluateTree(v.children.get(1)),v.operator);
+        else if(v.type == Node.OPERATOR)
+            return evaluateExpression(evaluateTree(v.children.get(0)), false, '!');
+        else
+            return evaluateRelationalExpression(v.condition);
+            
+    }
+    
+    //TODO this could have been much more beautiful.
+    private boolean evaluateRelationalExpression(String exp)
+    {
+        if(exp.contains("<="))
+        {
+            String[] id = exp.split("<=");
+            int v1 = memRef.getValue(id[0]);
+            int v2 = memRef.getValue(id[1]);
+            return v1<=v2;
+        }
+        if(exp.contains("<"))
+        {
+            String[] id = exp.split("<");
+            int v1 = memRef.getValue(id[0]);
+            int v2 = memRef.getValue(id[1]);
+            return v1<v2;
+        } 
+        if(exp.contains(">"))
+        {
+            String[] id = exp.split(">");
+            int v1 = memRef.getValue(id[0]);
+            int v2 = memRef.getValue(id[1]);
+            return v1>v2;
+        }       
+        if(exp.contains(">="))
+        {
+            String[] id = exp.split(">=");
+            int v1 = memRef.getValue(id[0]);
+            int v2 = memRef.getValue(id[1]);
+            return v1>=v2;
+        }           
+        if(exp.contains("=="))
+        {
+            String[] id = exp.split("==");
+            int v1 = memRef.getValue(id[0]);
+            int v2 = memRef.getValue(id[1]);
+            return v1==v2;
+        }               
+        if(exp.contains("!="))
+        {
+            String[] id = exp.split("!=");
+            int v1 = memRef.getValue(id[0]);
+            int v2 = memRef.getValue(id[1]);
+            return v1!=v2;
+        }
         return false;
+    }
+    
+    private boolean evaluateExpression(boolean val1,boolean val2, char op)
+    {
+        if(op == '|')
+            return val1|val2;
+        if(op == '!')
+            return !val1;
+        else
+            return val1&val2;
     }
     
 }

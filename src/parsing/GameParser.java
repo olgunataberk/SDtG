@@ -10,7 +10,6 @@ import java.util.logging.Logger;
 
 /**
  * Turn text input into rich TextLine objects.
- *
  */
 public class GameParser {
 
