@@ -1,6 +1,8 @@
 package karmaComputation;
 
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import memory.Memory;
 
@@ -28,6 +30,7 @@ public class EvaluationTree{
             this();
             condition = cond;
             type = CONDITION;
+            this.parent = parent;
         }
         
         public Node(char op,Node parent)
@@ -35,6 +38,7 @@ public class EvaluationTree{
             this();
             operator = op;
             type = OPERATOR;
+            this.parent = parent;
         }
         
         public Node getChild(int i)
@@ -44,11 +48,13 @@ public class EvaluationTree{
         
         public Node getParent()
         {
+            Logger.getGlobal().log(Level.INFO,"getParentCalled on node: "+ (type==1 ? operator : condition));
             return this.parent;
         }
         
         public void addChild(Node n)
         {
+            Logger.getGlobal().log(Level.INFO,"addChildCalled on node: "+ (type==1 ? operator : condition));
             this.children.add(n);
         }
         

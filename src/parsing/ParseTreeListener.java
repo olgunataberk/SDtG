@@ -23,7 +23,6 @@ import memory.Memory;
  */
 public class ParseTreeListener extends SdtgBaseListener {
 
-    private boolean initialExpression;
     private boolean choicePromptTrigger;
     
     private EvaluationTree evalTree;
@@ -37,7 +36,6 @@ public class ParseTreeListener extends SdtgBaseListener {
     public ParseTreeListener(Game game)
     {
         super();
-        initialExpression = false;
         evalTree = null;
         this.game = game;
         memo = new Memory();
@@ -59,6 +57,7 @@ public class ParseTreeListener extends SdtgBaseListener {
     public void enterConditionalTextLine(SdtgParser.ConditionalTextLineContext ctx)
     {
         evalTree = new EvaluationTree();
+        pNode = evalTree.getRoot();
         subject = ctx.getChild(3).getText();
     }
 
@@ -134,11 +133,6 @@ public class ParseTreeListener extends SdtgBaseListener {
     @Override
     public void enterKarmaExpression(SdtgParser.KarmaExpressionContext ctx)
     {
-        if (!initialExpression)
-        {
-            initialExpression = true;
-            pNode = evalTree.getRoot();
-        }
         if (ctx.getChildCount() == 3 && isBooleanOperator(ctx.getChild(1).toString()))
         {
             EvaluationTree.Node tempNode = evalTree.new Node(ctx.getChild(1).toString().charAt(0), pNode);
@@ -158,6 +152,8 @@ public class ParseTreeListener extends SdtgBaseListener {
     {
         if (ctx.getChildCount() == 3 && isBooleanOperator(ctx.getChild(1).toString()))
         {
+            if(pNode == null)
+                System.out.println("wat");
             EvaluationTree.Node tempNode = evalTree.new Node(ctx.getChild(1).toString().charAt(0), pNode);
             pNode.addChild(tempNode);
             pNode = tempNode;
