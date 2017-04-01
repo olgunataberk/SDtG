@@ -1,6 +1,8 @@
 package memory;
 
 import java.util.Hashtable;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class Memory {
 
@@ -13,7 +15,8 @@ public class Memory {
   
     public void addVariable(String key)
     {
-       lookUp.put(key, 0);
+        Logger.getGlobal().log(Level.INFO, "Declared variable: "+key);
+        lookUp.put(key, 0);
     }
     
     public int getValue(String key)

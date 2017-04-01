@@ -20,7 +20,7 @@ public class TextLine {
     public TextLine()
     {
         type = 0;
-        karmaTrigger = null;
+        karmaTrigger = new EvaluationTree();
     }
     
     public String speak()

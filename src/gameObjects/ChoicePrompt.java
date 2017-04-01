@@ -1,6 +1,7 @@
 package gameObjects;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.Scanner;
 
 import karmaComputation.KarmaOperation;
@@ -43,15 +44,24 @@ public class ChoicePrompt extends TextLine{
         choiceList.add(c);
     }
 
+    public String getChoiceIdentifiers()
+    {
+        String ret = "";
+        for(int i = 0 ; i < choiceList.size() ; i++)
+            ret += choiceList.get(i).prompt + "|";
+        return ret;
+    }
+    
     public ArrayList<KarmaOperation> choose()
     {
         Scanner k = new Scanner(System.in);
         do
         {
             String in = k.nextLine();
+            in = "\"" + in + "\"";
             for(int i = 0 ; i < choiceList.size() ; i++)
             {
-                if(choiceList.get(i).prompt.equals(in))
+                if(choiceList.get(i).prompt.equalsIgnoreCase(in))
                 {
                     ArrayList<KarmaOperation> tmp = choiceList.get(i).returnProcess();
                     k.close();

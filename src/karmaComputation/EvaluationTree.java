@@ -76,6 +76,8 @@ public class EvaluationTree{
     
     public boolean evaluate(Memory mem)
     {
+        if(root.children.size() == 0)
+            return true;
         memRef = mem;
         boolean temp = evaluateTree(root.children.get(0));
         memRef = null;
@@ -97,46 +99,47 @@ public class EvaluationTree{
     //TODO this could have been much more beautiful.
     private boolean evaluateRelationalExpression(String exp)
     {
+        //Logger.getGlobal().log(Level.INFO, "ET leaf error: "+exp);
         if(exp.contains("<="))
         {
             String[] id = exp.split("<=");
             int v1 = memRef.getValue(id[0]);
-            int v2 = memRef.getValue(id[1]);
+            int v2 = Integer.parseInt(id[1]);
             return v1<=v2;
         }
         if(exp.contains("<"))
         {
             String[] id = exp.split("<");
             int v1 = memRef.getValue(id[0]);
-            int v2 = memRef.getValue(id[1]);
+            int v2 = Integer.parseInt(id[1]);
             return v1<v2;
         } 
         if(exp.contains(">"))
         {
             String[] id = exp.split(">");
             int v1 = memRef.getValue(id[0]);
-            int v2 = memRef.getValue(id[1]);
+            int v2 = Integer.parseInt(id[1]);
             return v1>v2;
         }       
         if(exp.contains(">="))
         {
             String[] id = exp.split(">=");
             int v1 = memRef.getValue(id[0]);
-            int v2 = memRef.getValue(id[1]);
+            int v2 = Integer.parseInt(id[1]);
             return v1>=v2;
         }           
         if(exp.contains("=="))
         {
             String[] id = exp.split("==");
             int v1 = memRef.getValue(id[0]);
-            int v2 = memRef.getValue(id[1]);
+            int v2 = Integer.parseInt(id[1]);
             return v1==v2;
         }               
         if(exp.contains("!="))
         {
             String[] id = exp.split("!=");
             int v1 = memRef.getValue(id[0]);
-            int v2 = memRef.getValue(id[1]);
+            int v2 = Integer.parseInt(id[1]);
             return v1!=v2;
         }
         return false;

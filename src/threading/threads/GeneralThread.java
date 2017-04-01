@@ -4,11 +4,11 @@ package threading.threads;
  * Thread handling various types of output.
  *
  */
-public class OutputThread extends Thread {
+public class GeneralThread extends Thread {
 
     private Runnable currentRunnable;
 
-    public OutputThread(Runnable robj)
+    public GeneralThread(Runnable robj)
     {
         super(robj);
         currentRunnable = robj;

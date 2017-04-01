@@ -1,5 +1,5 @@
 initialize
-(karma1,karma2)
+(karma1,karma2,karma3,karma4,karma6)
 end
 script
 MT:"why do you suffer?"

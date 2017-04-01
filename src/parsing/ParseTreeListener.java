@@ -50,6 +50,7 @@ public class ParseTreeListener extends SdtgBaseListener {
     @Override
     public void exitGame(SdtgParser.GameContext ctx)
     {
+        game.setMemory(memo);
         Logger.getGlobal().log(Level.INFO,"ParseTreeListener finished it's job.");
     }
 
