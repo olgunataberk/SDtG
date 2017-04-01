@@ -1,15 +1,16 @@
-package gameObjects;
+package threading.runnables;
 
 import java.util.ArrayList;
 
+import gameObjects.TextLine;
 import memory.Memory;
 
-public class Game {
+public class GameRunnable implements Runnable{
 
     private ArrayList<TextLine> textSequence = new ArrayList<>();
     private Memory lookUp;
     
-    public Game()
+    public GameRunnable()
     {
         textSequence = new ArrayList<>();
     }
@@ -22,6 +23,14 @@ public class Game {
     public void setMemory(Memory mem)
     {
         lookUp = mem;
+    }
+
+    @Override
+    public void run()
+    {
+        
+        // TODO Auto-generated method stub
+        
     }
     
 }

@@ -10,13 +10,13 @@ import antlr.SdtgParser.DeclarationSectionContext;
 import antlr.SdtgParser.IdentifierListContext;
 import antlr.SdtgParser.KarmaOperationContext;
 import gameObjects.ChoicePrompt;
-import gameObjects.Game;
 import gameObjects.NpcTextLine;
 import gameObjects.PlayerTextLine;
 import gameObjects.TextLine;
 import karmaComputation.EvaluationTree;
 import karmaComputation.KarmaOperation;
 import memory.Memory;
+import threading.runnables.GameRunnable;
 
 /**
  * Fills a given empty "game" object according to the script input.
@@ -30,10 +30,10 @@ public class ParseTreeListener extends SdtgBaseListener {
     private TextLine textLine;
     private ChoicePrompt.Choice choice;
     private String subject;
-    private Game game;
+    private GameRunnable game;
     private Memory memo;
     
-    public ParseTreeListener(Game game)
+    public ParseTreeListener(GameRunnable game)
     {
         super();
         evalTree = null;

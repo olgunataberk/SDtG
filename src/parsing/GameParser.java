@@ -2,7 +2,7 @@ package parsing;
 
 import antlr.SdtgLexer;
 import antlr.SdtgParser;
-import gameObjects.Game;
+import threading.runnables.GameRunnable;
 
 import java.io.InputStream;
 
@@ -21,7 +21,7 @@ public class GameParser {
         
     }
 
-    public void parse(InputStream inputStream,Game game) throws Exception
+    public void parse(InputStream inputStream,GameRunnable game) throws Exception
     {
         ANTLRInputStream input = new ANTLRInputStream(inputStream);
         SdtgLexer lexer = new SdtgLexer(input);

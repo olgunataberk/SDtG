@@ -3,8 +3,8 @@ package mainPackage;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 
-import gameObjects.Game;
 import parsing.GameParser;
+import threading.runnables.GameRunnable;
 
 public class SdtgMain {
 
@@ -12,7 +12,7 @@ public class SdtgMain {
     {
         String expFileName = "Example.txt";
         FileInputStream fis = new FileInputStream(expFileName);
-        Game mainGame = new Game();
+        GameRunnable mainGame = new GameRunnable();
         GameParser gp = new GameParser();
         gp.parse(fis, mainGame);
     }

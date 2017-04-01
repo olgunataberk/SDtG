@@ -8,12 +8,18 @@ import karmaComputation.EvaluationTree;
  */
 public class TextLine {
 
+    public static final int REGULAR_TEXTLINE = 1;
+    public static final int CHOICE_TEXTLINE = 2;
+    
     protected EvaluationTree karmaTrigger;
     protected String subject;
     protected String line;
     
+    protected int type;
+    
     public TextLine()
     {
+        type = 0;
         karmaTrigger = null;
     }
     
@@ -25,5 +31,15 @@ public class TextLine {
     public void setEvaluationTree(EvaluationTree et)
     {
         karmaTrigger = et;
+    }
+    
+    public EvaluationTree getEvaluationTree()
+    {
+        return karmaTrigger;
+    }
+    
+    public int getType()
+    {
+        return type;
     }
 }
