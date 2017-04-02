@@ -113,13 +113,6 @@ public class EvaluationTree{
             int v1 = memRef.getValue(id[0]);
             int v2 = Integer.parseInt(id[1]);
             return v1<v2;
-        } 
-        if(exp.contains(">"))
-        {
-            String[] id = exp.split(">");
-            int v1 = memRef.getValue(id[0]);
-            int v2 = Integer.parseInt(id[1]);
-            return v1>v2;
         }       
         if(exp.contains(">="))
         {
@@ -127,7 +120,14 @@ public class EvaluationTree{
             int v1 = memRef.getValue(id[0]);
             int v2 = Integer.parseInt(id[1]);
             return v1>=v2;
-        }           
+        }            
+        if(exp.contains(">"))
+        {
+            String[] id = exp.split(">");
+            int v1 = memRef.getValue(id[0]);
+            int v2 = Integer.parseInt(id[1]);
+            return v1>v2;
+        }
         if(exp.contains("=="))
         {
             String[] id = exp.split("==");

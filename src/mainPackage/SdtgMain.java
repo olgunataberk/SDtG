@@ -13,7 +13,7 @@ public class SdtgMain {
     {
         String expFileName = "Example.txt";
         FileInputStream fis = new FileInputStream(expFileName);
-        GameRunnable mainGame = new GameRunnable();
+        GameRunnable mainGame = new GameRunnable(0);
         GameParser gp = new GameParser();
         gp.parse(fis, mainGame);
         GeneralThread gameCapsule = new GeneralThread(mainGame);

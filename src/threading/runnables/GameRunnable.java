@@ -12,7 +12,7 @@ import karmaComputation.KarmaOperation;
 import memory.Memory;
 import threading.threads.GeneralThread;
 
-public class GameRunnable implements Runnable{
+public class GameRunnable extends RunnableConfiguration implements Runnable{
 
     private LinkedList<String> outputList;
     private ArrayList<TextLine> textSequence;
@@ -21,8 +21,9 @@ public class GameRunnable implements Runnable{
     private GeneralThread oThread;
     private TextOutputRunnable toRunnable;
     
-    public GameRunnable()
+    public GameRunnable(int severity)
     {
+        super(severity);
         textSequence = new ArrayList<>();
         oThread = null;
         toRunnable = null;
