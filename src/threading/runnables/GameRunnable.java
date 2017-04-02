@@ -50,7 +50,7 @@ public class GameRunnable implements Runnable{
         while(!textSequence.isEmpty())
         {
             TextLine curr = textSequence.remove(0);
-            Logger.getGlobal().log(Level.INFO, curr.speak());
+            //Logger.getGlobal().log(Level.INFO, curr.speak());
             EvaluationTree evt = curr.getEvaluationTree();
             if(evt.evaluate(lookUp))
                 outputList.add(curr.speak());

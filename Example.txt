@@ -3,7 +3,7 @@ initialize
 end
 script
 MT:"why do you suffer?"
-MT: ["Do you like monkeys?" "Yes":(karma1+50), "No":(karma1-50)]
+MT: ["Do you like monkeys?" "Yes":(karma1+51), "No":(karma1-50)]
 (karma1>50)Me:"cuz its hard"
 (((karma1<50|karma4>80)|(karma3>42&karma6>213))&karma2>100)Me:"and its so hard"
 end
