@@ -1,10 +1,36 @@
 initialize
-(karma1,karma2,karma3,karma4,karma6)
+(d1,d2)
 end
 script
-MT:"why do you suffer?"
-MT: ["Do you like monkeys?" "Yes":(karma1+50), "No":(karma1-50)]
-(karma1>=50)Me:"cuz its hard"
-(((karma1<50|karma4>80)|(karma3>42&karma6>213))&karma2>100)Me:"and its so hard"
-end
+You: "Why are you not working! (Screams at Ion Conductor...)"
+Brother: "Oh <Random_Holy_Entity>, stop screaming! Let me take a look... See, there should have been a wire between here and here. Do you want to fit it in?"
+You: "I can't believe I missed that one. (Fits wire in...)"
+Brother: "You should be more cautious, what if it worked at first and broke down after take off, would you still be able to fix it after you crashed into something?"
+You: "Oh come on Brother, it's just a glider. I couldn't crash into things even if I wanted to."
+Brother: "You never know for sure little one. Do you remember the accident that happened a year ago?"
+You: "It is hard to call that one an accident, and I am not by any means little"
+Brother: "And how do you know that?"
+You: "Father thinks so."
+Brother: "(Laughs...) (Looks at <You>...) (Laughs a little more...)"
+You: "(Starts laughing...)"
+Brother: ["Promise me that you will be more careful on pre-flight maintenance from now on." "Okay.":(d1+10), "(Pranked!)Okay.":(d1+5)]
+(d1>5)You: "I'll race you back home!"
+(d1>5)Brother: "I have a bike though..."
+(d1<6)You: "I am losing my nonexistent creativity."
 
+You: "(This is Anada, the planet where mountains float. My father is a scientist who works for the Anadian Government
+, dad tells me that we were lucky to be on such a strange planet. He says he owes the success of his research to Anada's 
+extraordinary planetary structure. I was born here, I grew up amongst the biggest floatains[floating mountain] of Anada.
+Strong upstream nitrogen currents from the core of the planet allow for gliding across the skies at ease, given the proper vehicle.
+Brother and I made ourselves a glider and named it GliDos, we fly almost every day, but I still wish we could fly higher, higher
+than the sky...)"
+
+Father: "How was your day?"
+Brother: "Like the usual, we flew a little."
+Father: "Where did you fly to this time?"
+You: "We flew by the space jumper."
+Father: "Oh, so you went to Ganmir. Space jumper... 30 years ago, no one would even think about idea of a space jumper, nevermind
+actually making it..."
+Brother: "(Interrupts dad...) Okay, we are like really hungry, can we listen to the X years ago stories later?"
+Father: "(Slightly dissapointed...) Fine. Get some rest until dinner."
+end
