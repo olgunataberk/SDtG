@@ -50,11 +50,21 @@ scriptSection:
 textLineList:
 	textLine textLineList
 	| textLine
-	;
+	| textBlock
+	;	
+	
 	
 textLine:
 	LP karmaExpression RP Identifier ':' line #conditionalTextLine
 	| Identifier ':' line #regularTextLine
+	;
+	
+textBlock:
+	LP karmaExpression RP '{' textList '}' ;
+	
+textList:
+	Identifier ':' line textList
+	| Identifier ':' line
 	;
 	
 line:
