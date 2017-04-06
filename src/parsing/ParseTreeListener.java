@@ -61,16 +61,9 @@ public class ParseTreeListener extends SdtgBaseListener {
     @Override
     public void enterConditionalTextLine(SdtgParser.ConditionalTextLineContext ctx)
     {
-        if(textBlockTrigger)
-        {
-               
-        }
-        else
-        {
-            evalTree = new EvaluationTree();
-            pNode = evalTree.getRoot();
-            subject = ctx.getChild(3).getText();
-        }
+        evalTree = new EvaluationTree();
+        pNode = evalTree.getRoot();
+        subject = ctx.getChild(3).getText();
     }
 
     @Override

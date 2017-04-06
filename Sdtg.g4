@@ -60,13 +60,8 @@ textLine:
 	;
 	
 textBlock:
-	LP karmaExpression RP '{' textList '}' ;
-	
-textList:
-	Identifier ':' line textList
-	| Identifier ':' line
-	;
-	
+	LP karmaExpression RP '{' textLineList '}' ;
+
 line:
 	choicePrompt
 	| String
