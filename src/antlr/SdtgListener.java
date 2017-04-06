@@ -1,5 +1,4 @@
 // Generated from Sdtg.g4 by ANTLR 4.6
-
 package antlr;
 
 import org.antlr.v4.runtime.tree.ParseTreeListener;
@@ -83,6 +82,26 @@ public interface SdtgListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitRegularTextLine(SdtgParser.RegularTextLineContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link SdtgParser#textBlock}.
+	 * @param ctx the parse tree
+	 */
+	void enterTextBlock(SdtgParser.TextBlockContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link SdtgParser#textBlock}.
+	 * @param ctx the parse tree
+	 */
+	void exitTextBlock(SdtgParser.TextBlockContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link SdtgParser#textList}.
+	 * @param ctx the parse tree
+	 */
+	void enterTextList(SdtgParser.TextListContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link SdtgParser#textList}.
+	 * @param ctx the parse tree
+	 */
+	void exitTextList(SdtgParser.TextListContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link SdtgParser#line}.
 	 * @param ctx the parse tree

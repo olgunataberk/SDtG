@@ -9,6 +9,8 @@ import antlr.SdtgParser.ChoiceExpressionContext;
 import antlr.SdtgParser.DeclarationSectionContext;
 import antlr.SdtgParser.IdentifierListContext;
 import antlr.SdtgParser.KarmaOperationContext;
+import antlr.SdtgParser.TextBlockContext;
+import antlr.SdtgParser.TextListContext;
 import gameObjects.ChoicePrompt;
 import gameObjects.NpcTextLine;
 import gameObjects.PlayerTextLine;
@@ -24,6 +26,7 @@ import threading.runnables.GameRunnable;
 public class ParseTreeListener extends SdtgBaseListener {
 
     private boolean choicePromptTrigger;
+    private boolean textBlockTrigger;
     
     private EvaluationTree evalTree;
     private EvaluationTree.Node pNode;
@@ -39,6 +42,7 @@ public class ParseTreeListener extends SdtgBaseListener {
         evalTree = null;
         this.game = game;
         memo = new Memory();
+        textBlockTrigger = false;
     }
 
     @Override
@@ -57,16 +61,30 @@ public class ParseTreeListener extends SdtgBaseListener {
     @Override
     public void enterConditionalTextLine(SdtgParser.ConditionalTextLineContext ctx)
     {
-        evalTree = new EvaluationTree();
-        pNode = evalTree.getRoot();
-        subject = ctx.getChild(3).getText();
+        if(textBlockTrigger)
+        {
+               
+        }
+        else
+        {
+            evalTree = new EvaluationTree();
+            pNode = evalTree.getRoot();
+            subject = ctx.getChild(3).getText();
+        }
     }
 
     @Override
     public void exitConditionalTextLine(SdtgParser.ConditionalTextLineContext ctx)
     {
-        textLine.setEvaluationTree(evalTree);
-        game.addTextLine(textLine);
+        if(textBlockTrigger)
+        {
+               
+        }
+        else
+        {
+            textLine.setEvaluationTree(evalTree);
+            game.addTextLine(textLine);
+        }
     }
 
     @Override
@@ -129,6 +147,32 @@ public class ParseTreeListener extends SdtgBaseListener {
                 ctx.getChild(2).getText().charAt(0),
                 Integer.parseInt(ctx.getChild(3).getText())
                 ));
+    }
+    
+    @Override
+    public void enterTextBlock(TextBlockContext ctx)
+    {
+        textBlockTrigger = true;
+    }
+    
+    @Override
+    public void exitTextBlock(TextBlockContext ctx)
+    {
+        textBlockTrigger = false;
+    }
+    
+    @Override
+    public void enterTextList(TextListContext ctx)
+    {
+        // TODO Auto-generated method stub
+        super.enterTextList(ctx);
+    }
+    
+    @Override
+    public void exitTextList(TextListContext ctx)
+    {
+        // TODO Auto-generated method stub
+        super.exitTextList(ctx);
     }
     
     @Override
