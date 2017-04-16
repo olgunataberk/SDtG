@@ -82,6 +82,7 @@ public class ParseTreeListener extends SdtgBaseListener {
     @Override
     public void exitRegularTextLine(SdtgParser.RegularTextLineContext ctx)
     {
+        textLine.setEvaluationTreeList(new ArrayList<>(evalList));
         game.addTextLine(textLine);
     }
 

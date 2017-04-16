@@ -50,6 +50,7 @@ scriptSection:
 textLineList:
 	textLine textLineList
 	| textLine
+	| textBlock textLineList
 	| textBlock
 	;	
 	

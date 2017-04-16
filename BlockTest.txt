@@ -1,0 +1,10 @@
+initialize
+(d1,d2)
+end
+script
+
+Brother: ["Promise me that you will be more careful on pre-flight maintenance from now on." "Okay.":(d1+10), "(Pranked!)Okay.":(d1+5)]
+(d1>6){You: "I'll race you back home!"}
+(d1>5){(d1>6)Brother: "I have a bike though..."}
+(d1<6)You: "I am losing my nonexistent creativity."
+end

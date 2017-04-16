@@ -49,7 +49,7 @@ public class ChoicePrompt extends TextLine{
         String ret = "";
         for(int i = 0 ; i < choiceList.size() ; i++)
             ret += choiceList.get(i).prompt + "|";
-        return ret;
+        return ret.substring(0,ret.length()-1);
     }
     
     public ArrayList<KarmaOperation> choose()
