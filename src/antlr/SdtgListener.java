@@ -93,16 +93,6 @@ public interface SdtgListener extends ParseTreeListener {
 	 */
 	void exitTextBlock(SdtgParser.TextBlockContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link SdtgParser#textList}.
-	 * @param ctx the parse tree
-	 */
-	void enterTextList(SdtgParser.TextListContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link SdtgParser#textList}.
-	 * @param ctx the parse tree
-	 */
-	void exitTextList(SdtgParser.TextListContext ctx);
-	/**
 	 * Enter a parse tree produced by {@link SdtgParser#line}.
 	 * @param ctx the parse tree
 	 */

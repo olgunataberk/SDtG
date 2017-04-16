@@ -1,16 +1,15 @@
 package parsing;
 
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import antlr.SdtgBaseListener;
 import antlr.SdtgParser;
 import antlr.SdtgParser.ChoiceExpressionContext;
-import antlr.SdtgParser.DeclarationSectionContext;
 import antlr.SdtgParser.IdentifierListContext;
 import antlr.SdtgParser.KarmaOperationContext;
 import antlr.SdtgParser.TextBlockContext;
-import antlr.SdtgParser.TextListContext;
 import gameObjects.ChoicePrompt;
 import gameObjects.NpcTextLine;
 import gameObjects.PlayerTextLine;
@@ -26,8 +25,9 @@ import threading.runnables.GameRunnable;
 public class ParseTreeListener extends SdtgBaseListener {
 
     private boolean choicePromptTrigger;
-    private boolean textBlockTrigger;
+    private int expressionLevel;
     
+    private ArrayList<EvaluationTree> evalList;
     private EvaluationTree evalTree;
     private EvaluationTree.Node pNode;
     private TextLine textLine;
@@ -42,7 +42,8 @@ public class ParseTreeListener extends SdtgBaseListener {
         evalTree = null;
         this.game = game;
         memo = new Memory();
-        textBlockTrigger = false;
+        expressionLevel = 0;
+        evalList = new ArrayList<>();
     }
 
     @Override
@@ -61,23 +62,15 @@ public class ParseTreeListener extends SdtgBaseListener {
     @Override
     public void enterConditionalTextLine(SdtgParser.ConditionalTextLineContext ctx)
     {
-        evalTree = new EvaluationTree();
-        pNode = evalTree.getRoot();
         subject = ctx.getChild(3).getText();
     }
 
     @Override
     public void exitConditionalTextLine(SdtgParser.ConditionalTextLineContext ctx)
     {
-        if(textBlockTrigger)
-        {
-               
-        }
-        else
-        {
-            textLine.setEvaluationTree(evalTree);
-            game.addTextLine(textLine);
-        }
+        textLine.setEvaluationTreeList(new ArrayList<>(evalList));
+        game.addTextLine(textLine);
+        evalList.remove(0);
     }
 
     @Override
@@ -143,34 +136,21 @@ public class ParseTreeListener extends SdtgBaseListener {
     }
     
     @Override
-    public void enterTextBlock(TextBlockContext ctx)
-    {
-        textBlockTrigger = true;
-    }
-    
-    @Override
     public void exitTextBlock(TextBlockContext ctx)
     {
-        textBlockTrigger = false;
-    }
-    
-    @Override
-    public void enterTextList(TextListContext ctx)
-    {
-        // TODO Auto-generated method stub
-        super.enterTextList(ctx);
-    }
-    
-    @Override
-    public void exitTextList(TextListContext ctx)
-    {
-        // TODO Auto-generated method stub
-        super.exitTextList(ctx);
+        evalList.remove(0);
     }
     
     @Override
     public void enterKarmaExpression(SdtgParser.KarmaExpressionContext ctx)
     {
+        if(expressionLevel == 0)
+        {
+            evalTree = new EvaluationTree();
+            pNode = evalTree.getRoot();
+        }
+        /**/
+        expressionLevel++;
         if (ctx.getChildCount() == 3 && isBooleanOperator(ctx.getChild(1).toString()))
         {
             EvaluationTree.Node tempNode = evalTree.new Node(ctx.getChild(1).toString().charAt(0), pNode);
@@ -182,7 +162,10 @@ public class ParseTreeListener extends SdtgBaseListener {
     @Override
     public void exitKarmaExpression(SdtgParser.KarmaExpressionContext ctx)
     {
+        expressionLevel--;
         if (ctx.getChildCount() == 3 && isBooleanOperator(ctx.getChild(1).toString())) pNode = pNode.getParent();
+        if(expressionLevel == 0)
+            evalList.add(evalTree);
     }
 
     @Override
@@ -190,8 +173,6 @@ public class ParseTreeListener extends SdtgBaseListener {
     {
         if (ctx.getChildCount() == 3 && isBooleanOperator(ctx.getChild(1).toString()))
         {
-            if(pNode == null)
-                System.out.println("wat");
             EvaluationTree.Node tempNode = evalTree.new Node(ctx.getChild(1).toString().charAt(0), pNode);
             pNode.addChild(tempNode);
             pNode = tempNode;

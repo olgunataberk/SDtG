@@ -112,18 +112,6 @@ public class SdtgBaseListener implements SdtgListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterTextList(SdtgParser.TextListContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitTextList(SdtgParser.TextListContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
 	@Override public void enterLine(SdtgParser.LineContext ctx) { }
 	/**
 	 * {@inheritDoc}

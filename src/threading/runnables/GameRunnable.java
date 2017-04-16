@@ -52,15 +52,21 @@ public class GameRunnable extends RunnableConfiguration implements Runnable{
         {
             TextLine curr = textSequence.remove(0);
             //Logger.getGlobal().log(Level.INFO, curr.speak());
-            EvaluationTree evt = curr.getEvaluationTree();
-            if(evt.evaluate(lookUp))
-                outputList.add(curr.speak());
-            if(curr.getType() == TextLine.CHOICE_TEXTLINE)
+            ArrayList<EvaluationTree> evtList = curr.getEvaluationTreeList();
+            boolean isValid = true;
+            for(EvaluationTree evt : evtList)
+                if(!evt.evaluate(lookUp))
+                    isValid = false;
+            if(isValid||evtList.isEmpty())
             {
-                outputList.add(((ChoicePrompt)curr).getChoiceIdentifiers());
-                ArrayList<KarmaOperation> kop = ((ChoicePrompt)curr).choose();
-                for(KarmaOperation k : kop)
-                    k.evaluate(lookUp);
+                outputList.add(curr.speak());
+                if(curr.getType() == TextLine.CHOICE_TEXTLINE)
+                {
+                    outputList.add(((ChoicePrompt)curr).getChoiceIdentifiers());
+                    ArrayList<KarmaOperation> kop = ((ChoicePrompt)curr).choose();
+                    for(KarmaOperation k : kop)
+                        k.evaluate(lookUp);
+                }
             }
         }
         try

@@ -1,5 +1,7 @@
 package gameObjects;
 
+import java.util.ArrayList;
+
 import karmaComputation.EvaluationTree;
 
 /**
@@ -11,7 +13,7 @@ public class TextLine {
     public static final int REGULAR_TEXTLINE = 1;
     public static final int CHOICE_TEXTLINE = 2;
     
-    protected EvaluationTree karmaTrigger;
+    protected ArrayList<EvaluationTree> karmaTriggerList;
     protected String subject;
     protected String line;
     
@@ -20,7 +22,7 @@ public class TextLine {
     public TextLine()
     {
         type = 0;
-        karmaTrigger = new EvaluationTree();
+        karmaTriggerList = new ArrayList<EvaluationTree>();
     }
     
     public String speak()
@@ -28,14 +30,14 @@ public class TextLine {
         return this.subject + ": " + this.line;
     }
     
-    public void setEvaluationTree(EvaluationTree et)
+    public void setEvaluationTreeList(ArrayList<EvaluationTree> et)
     {
-        karmaTrigger = et;
+        karmaTriggerList = et;
     }
     
-    public EvaluationTree getEvaluationTree()
+    public ArrayList<EvaluationTree> getEvaluationTreeList()
     {
-        return karmaTrigger;
+        return karmaTriggerList;
     }
     
     public int getType()
