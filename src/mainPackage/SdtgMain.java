@@ -11,7 +11,7 @@ public class SdtgMain {
 
     public static void main(String[] args) throws Exception
     {
-        String expFileName = "BlockTest.txt";
+        String expFileName = "Example.txt";
         FileInputStream fis = new FileInputStream(expFileName);
         GameRunnable mainGame = new GameRunnable(0);
         GameParser gp = new GameParser();
