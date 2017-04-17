@@ -57,6 +57,17 @@ in your Script™.
 
       For example `(k1>50)jaraxxus:"Who am I?"` will be displayed only if k1 is bigger than 50 at that time.
       
+   - #### Text Blocks
+      
+      For multiple lines of text that require the evaluation of a single condition, you can use text blocks.
+      ```
+      (k1>50)
+      {
+         jaraxxus : "Am I really jaraxxus?"
+         jaraxxus : "Who am I?"
+      }
+      ```
+      will be displayed sequentially when `k1>50` is satisfied.
 - #### How ask for/handle input from user.
    
    This is a bit more complicated than defining a regular conversation. After specifying a name, you must write down the question and answers available to that question one by one enclosed by square brackets. Answers are defined as sets of two elements where the first one is the string representation of the choice and the other one is the procedure implying which KarmaVariables are affected in what way.
