@@ -10,7 +10,8 @@ import java.util.logging.Logger;
  */
 public class TextOutputRunnable extends RunnableConfiguration implements Runnable {
 
-    // TODO Fetch this information from somewhere else, as this might be changed on runtime.
+    // TODO Fetch this information from somewhere else, as this might be changed
+    // on runtime.
     private static final int SLEEP_INTERPRINT = 40;
     private static final char DELIMITER = '\n';
 
@@ -19,8 +20,11 @@ public class TextOutputRunnable extends RunnableConfiguration implements Runnabl
 
     /**
      * 
-     * @param severity How important the execution of this thread is (Not important: 0-1-2 :Very important).
-     * @param outQue Queue to fetch strings from.
+     * @param severity
+     *            How important the execution of this thread is (Not important:
+     *            0-1-2 :Very important).
+     * @param outQue
+     *            Queue to fetch strings from.
      */
     public TextOutputRunnable(int severity, LinkedList<String> outQue)
     {
@@ -50,13 +54,13 @@ public class TextOutputRunnable extends RunnableConfiguration implements Runnabl
 
     private void doWork() throws InterruptedException
     {
-        if (outputQueue.size() > 0)
+        if (!outputQueue.isEmpty())
         {
             String str = outputQueue.removeFirst();
             long lastWork = System.currentTimeMillis();
             for (int i = 0; i < str.length(); i++)
             {
-                while(System.currentTimeMillis() - lastWork < SLEEP_INTERPRINT)
+                while (System.currentTimeMillis() - lastWork < SLEEP_INTERPRINT)
                 {
                     Thread.sleep(UPDATE_DELAY);
                 }

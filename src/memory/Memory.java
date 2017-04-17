@@ -6,27 +6,26 @@ import java.util.logging.Logger;
 
 public class Memory {
 
-    private Hashtable<String,Integer> lookUp;
-    
+    private Hashtable<String, Integer> lookUp;
+
     public Memory()
     {
-        lookUp = new Hashtable<String,Integer>();
+        lookUp = new Hashtable<String, Integer>();
     }
-  
+
     public void addVariable(String key)
     {
-        Logger.getGlobal().log(Level.INFO, "Declared variable: "+key);
         lookUp.put(key, 0);
     }
-    
+
     public int getValue(String key)
     {
         return lookUp.get(key);
     }
 
-    public void setValue(String key,int value)
+    public void setValue(String key, int value)
     {
         lookUp.put(key, value);
     }
-    
+
 }

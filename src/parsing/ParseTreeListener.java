@@ -26,7 +26,7 @@ public class ParseTreeListener extends SdtgBaseListener {
 
     private boolean choicePromptTrigger;
     private int expressionLevel;
-    
+
     private ArrayList<EvaluationTree> evalList;
     private EvaluationTree evalTree;
     private EvaluationTree.Node pNode;
@@ -35,7 +35,7 @@ public class ParseTreeListener extends SdtgBaseListener {
     private String subject;
     private GameRunnable game;
     private Memory memo;
-    
+
     public ParseTreeListener(GameRunnable game)
     {
         super();
@@ -51,12 +51,12 @@ public class ParseTreeListener extends SdtgBaseListener {
     {
         memo.addVariable(ctx.getChild(0).getText());
     }
-    
+
     @Override
     public void exitGame(SdtgParser.GameContext ctx)
     {
         game.setMemory(memo);
-        Logger.getGlobal().log(Level.INFO,"ParseTreeListener finished it's job.");
+        Logger.getGlobal().log(Level.INFO, "ParseTreeListener finished it's job.");
     }
 
     @Override
@@ -101,51 +101,48 @@ public class ParseTreeListener extends SdtgBaseListener {
     {
         if (!choicePromptTrigger)
         {
-            if(subject.equals("Player"))
+            if (subject.equals("Player"))
                 textLine = new PlayerTextLine(ctx.getText());
             else
-                textLine = new NpcTextLine(subject,ctx.getText());
+                textLine = new NpcTextLine(subject, ctx.getText());
         }
     }
 
     @Override
     public void enterChoicePrompt(SdtgParser.ChoicePromptContext ctx)
     {
-        textLine = new ChoicePrompt(subject,ctx.getChild(1).getText());
+        textLine = new ChoicePrompt(subject, ctx.getChild(1).getText());
     }
 
     @Override
     public void enterChoiceExpression(ChoiceExpressionContext ctx)
     {
-        choice = ((ChoicePrompt)textLine).new Choice(ctx.getChild(0).getText());
+        choice = ((ChoicePrompt) textLine).new Choice(ctx.getChild(0).getText());
     }
-    
+
     @Override
     public void exitChoiceExpression(ChoiceExpressionContext ctx)
     {
-        ((ChoicePrompt)textLine).addChoice(choice);
+        ((ChoicePrompt) textLine).addChoice(choice);
     }
-    
+
     @Override
     public void enterKarmaOperation(KarmaOperationContext ctx)
     {
-        choice.addKarmaExpression(new KarmaOperation(
-                ctx.getChild(1).getText(),
-                ctx.getChild(2).getText().charAt(0),
-                Integer.parseInt(ctx.getChild(3).getText())
-                ));
+        choice.addKarmaExpression(new KarmaOperation(ctx.getChild(1).getText(), ctx.getChild(2).getText().charAt(0),
+                Integer.parseInt(ctx.getChild(3).getText())));
     }
-    
+
     @Override
     public void exitTextBlock(TextBlockContext ctx)
     {
         evalList.remove(0);
     }
-    
+
     @Override
     public void enterKarmaExpression(SdtgParser.KarmaExpressionContext ctx)
     {
-        if(expressionLevel == 0)
+        if (expressionLevel == 0)
         {
             evalTree = new EvaluationTree();
             pNode = evalTree.getRoot();
@@ -165,8 +162,7 @@ public class ParseTreeListener extends SdtgBaseListener {
     {
         expressionLevel--;
         if (ctx.getChildCount() == 3 && isBooleanOperator(ctx.getChild(1).toString())) pNode = pNode.getParent();
-        if(expressionLevel == 0)
-            evalList.add(evalTree);
+        if (expressionLevel == 0) evalList.add(evalTree);
     }
 
     @Override

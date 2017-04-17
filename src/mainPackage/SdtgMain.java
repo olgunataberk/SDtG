@@ -5,7 +5,7 @@ import java.io.FileNotFoundException;
 
 import parsing.GameParser;
 import threading.runnables.GameRunnable;
-import threading.threads.GeneralThread;
+import threading.threads.BaseThread;
 
 public class SdtgMain {
 
@@ -16,7 +16,7 @@ public class SdtgMain {
         GameRunnable mainGame = new GameRunnable(0);
         GameParser gp = new GameParser();
         gp.parse(fis, mainGame);
-        GeneralThread gameCapsule = new GeneralThread(mainGame);
+        BaseThread gameCapsule = new BaseThread(mainGame);
         gameCapsule.start();
     }
 

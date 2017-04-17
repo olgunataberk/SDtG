@@ -6,7 +6,7 @@ public class PlayerTextLine extends TextLine {
 
     public PlayerTextLine(String line)
     {
-        this.type = REGULAR_TEXTLINE; 
+        this.type = REGULAR_TEXTLINE;
         this.subject = Config.PlayerConfig.playerName;
         this.line = line;
     }

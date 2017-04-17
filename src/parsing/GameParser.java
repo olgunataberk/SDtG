@@ -16,12 +16,7 @@ import org.antlr.v4.runtime.tree.ParseTreeWalker;
  */
 public class GameParser {
 
-    public GameParser()
-    {
-        
-    }
-
-    public void parse(InputStream inputStream,GameRunnable game) throws Exception
+    public void parse(InputStream inputStream, GameRunnable game) throws Exception
     {
         ANTLRInputStream input = new ANTLRInputStream(inputStream);
         SdtgLexer lexer = new SdtgLexer(input);
