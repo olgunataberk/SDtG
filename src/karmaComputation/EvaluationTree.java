@@ -1,15 +1,25 @@
 package karmaComputation;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import memory.Memory;
 
-public class EvaluationTree {
+public class EvaluationTree implements Serializable{
 
-    public class Node {
+    /**
+     * 
+     */
+    private static final long serialVersionUID = 8447252879168619273L;
 
+    public class Node implements Serializable{
+
+        /**
+         * 
+         */
+        private static final long serialVersionUID = -9218852452364269112L;
         private static final int CONDITION = 0;
         private static final int OPERATOR = 1;
 

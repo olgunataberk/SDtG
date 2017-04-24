@@ -1,9 +1,15 @@
 package karmaComputation;
 
+import java.io.Serializable;
+
 import memory.Memory;
 
-public class KarmaOperation {
+public class KarmaOperation implements Serializable{
 
+    /**
+     * 
+     */
+    private static final long serialVersionUID = 7131594369292280764L;
     private String id;
     private int literal;
     private char operator;

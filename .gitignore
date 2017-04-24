@@ -4,3 +4,5 @@ WrittenStuff/
 thirdpartylib/S*
 thirdpartylib/*.txt
 thirdpartylib/*~
+ExeMain
+exec/

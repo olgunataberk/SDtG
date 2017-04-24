@@ -1,4 +1,4 @@
-package textUtilities;
+package utilities;
 
 import java.util.ArrayList;
 import java.io.*;

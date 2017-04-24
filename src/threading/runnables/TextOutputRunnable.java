@@ -10,6 +10,10 @@ import java.util.logging.Logger;
  */
 public class TextOutputRunnable extends RunnableConfiguration implements Runnable {
 
+    /**
+     * 
+     */
+    private static final long serialVersionUID = 8092209390290703303L;
     // TODO Fetch this information from somewhere else, as this might be changed
     // on runtime.
     private static final int SLEEP_INTERPRINT = 40;

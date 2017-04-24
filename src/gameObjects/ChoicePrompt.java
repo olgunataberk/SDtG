@@ -1,14 +1,29 @@
 package gameObjects;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Scanner;
 
 import karmaComputation.KarmaOperation;
 
-public class ChoicePrompt extends TextLine {
+/**
+ * 
+ * 
+ *
+ */
+public class ChoicePrompt extends TextLine{
 
-    public class Choice {
+    /**
+     * 
+     */
+    private static final long serialVersionUID = 5238068510038205703L;
+
+    public class Choice implements Serializable{
+        /**
+         * 
+         */
+        private static final long serialVersionUID = -3124120028332110196L;
         private String prompt;
         private ArrayList<KarmaOperation> kexp;
 

@@ -1,5 +1,6 @@
 package gameObjects;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 import karmaComputation.EvaluationTree;
@@ -9,8 +10,12 @@ import karmaComputation.EvaluationTree;
  * displayed on screen.
  * 
  */
-public class TextLine {
+public class TextLine implements Serializable {
 
+    /**
+     * 
+     */
+    private static final long serialVersionUID = 2090617981394191041L;
     public static final int REGULAR_TEXTLINE = 1;
     public static final int CHOICE_TEXTLINE = 2;
 

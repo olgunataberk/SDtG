@@ -1,5 +1,6 @@
 package threading.runnables;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.logging.Level;
@@ -12,8 +13,14 @@ import karmaComputation.KarmaOperation;
 import memory.Memory;
 import threading.threads.BaseThread;
 
-public class GameRunnable extends RunnableConfiguration implements Runnable {
+public class GameRunnable extends RunnableConfiguration implements Runnable,Serializable {
 
+    /*TextLine and Memory should be serializable.*/
+    
+    /**
+     * 
+     */
+    private static final long serialVersionUID = 8174824646889410516L;
     private LinkedList<String> outputList;
     private ArrayList<TextLine> textSequence;
     private Memory lookUp;
@@ -21,6 +28,15 @@ public class GameRunnable extends RunnableConfiguration implements Runnable {
     private BaseThread oThread;
     private TextOutputRunnable toRunnable;
 
+    public GameRunnable()
+    {
+        super();
+        textSequence = new ArrayList<>();
+        oThread = null;
+        toRunnable = null;
+        outputList = new LinkedList<String>();
+    }
+    
     public GameRunnable(int severity)
     {
         super(severity);

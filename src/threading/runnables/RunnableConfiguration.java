@@ -1,14 +1,25 @@
 package threading.runnables;
 
+import java.io.Serializable;
+
 /**
  * Contains information on how a runnable should run.
  *
  */
-public class RunnableConfiguration {
+public class RunnableConfiguration implements Serializable{
 
+    /**
+     * 
+     */
+    private static final long serialVersionUID = 7147017697994564546L;
     protected static final int SLEEP_IDLE = 50;
     protected int UPDATE_DELAY;
 
+    
+    public RunnableConfiguration()
+    {
+        UPDATE_DELAY = 5;
+    }
     /**
      * 
      * @param SEVERITY

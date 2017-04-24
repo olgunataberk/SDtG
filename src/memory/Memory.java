@@ -1,11 +1,14 @@
 package memory;
 
+import java.io.Serializable;
 import java.util.Hashtable;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
-public class Memory {
+public class Memory implements Serializable{
 
+    /**
+     * 
+     */
+    private static final long serialVersionUID = 626136876688978317L;
     private Hashtable<String, Integer> lookUp;
 
     public Memory()

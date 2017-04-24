@@ -7,6 +7,9 @@ import java.util.ArrayList;
 import org.junit.Before;
 import org.junit.Test;
 
+import utilities.TextReader;
+import utilities.TextWriter;
+
 public class TextIoTest {
 
     TextWriter tw;
