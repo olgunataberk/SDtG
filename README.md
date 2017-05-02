@@ -12,8 +12,9 @@ A text-based-sci-fi-action-adventure-rpg game(or engine).
 6. Now you are ready to work with the project on your favourite IDE(although I strongly suggest using Eclipse).
 
 ## How to Make a Game  
-  
-Currently you can override "Example.txt" with your Script™. 
+
+(This works for Windows)
+Currently you can override "Example.txt" with your Script™. When executed SDtG will produce a bat file in a folder in your project folder named "exec/start.bat", which will execute the jar file.
 
 ## How to Write a script  
 
