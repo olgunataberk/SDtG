@@ -1,7 +1,7 @@
 package threading.threads;
 
 /**
- * Thread handling various types of output.
+ * Thread handling lots of stuff.
  *
  */
 public class BaseThread extends Thread {

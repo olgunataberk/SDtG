@@ -29,11 +29,13 @@ import java.util.logging.Logger;
 
 import threading.runnables.GameRunnable;
 
+/**
+ * Create an executable jar and a binary file, representing the whole game.
+ * 
+ */
 public class ExecutableCreator {
 
-    /**
-     * If run with eclipse process' wd points to project's directory.
-     */
+    //If run with eclipse, process' working directory points to project's directory.
     private static String workingDirectory;
     private static String targetDirectory;
     
@@ -51,6 +53,9 @@ public class ExecutableCreator {
             "threading\\threads\\BaseThread.java"
     };
     
+    /**
+     * Without specifying the directory, executable file is stored in folder named exec.
+     */
     public ExecutableCreator()
     {
         targetDirectory = "\\exec";
@@ -58,16 +63,24 @@ public class ExecutableCreator {
         setMainFile();
     }
     
+    /**
+     * Instantiate an ExecutableCreator which will output to the specified directory(WorkingDirectory/SpecifiedDirectory).
+     * @param dir Path to directory 
+     */
     public ExecutableCreator(String dir)
     {
         this();
         targetDirectory = dir;
     }
     
-    //TODO Keep all the .class files encrypted in a file, read from there to create new jar 
-    /*Tries to create exe, logs to output on failure.*/
+    /**
+     * Tries to create exe, logs to output on failure.
+     * @param gameInstance game instance to write.
+     * @return whether or not the process was successful.
+     */
     public boolean createExecutable(GameRunnable gameInstance)
     {
+        /*Directory to store the output.*/
         File dir = new File(workingDirectory + targetDirectory);
         deleteDirectory(dir);
         if(!dir.mkdir())
@@ -200,7 +213,8 @@ public class ExecutableCreator {
         for(File f : sourceFiles)
             if(f.getName().contains(".class"))
                 f.delete();
-        /*Create bat script to run the jar.*/
+        /*Create a bat script to run the jar.*/
+        /*This seems to be important for the process of running the .jar on Windows.*/
         try
         {
             FileOutputStream fos = new FileOutputStream(workingDirectory + targetDirectory + "\\start.bat");
@@ -227,6 +241,7 @@ public class ExecutableCreator {
         element.delete();
     }
     
+    /*Cheating static initialization.*/
     private void setMainFile()
     {
         mainJava = "package mainPackage;"+

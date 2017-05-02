@@ -3,12 +3,14 @@ package memory;
 import java.io.Serializable;
 import java.util.Hashtable;
 
+/**
+ * Holds key(karma variables)-value(integers) pairs.
+ * 
+ */
 public class Memory implements Serializable{
-
-    /**
-     * 
-     */
+    
     private static final long serialVersionUID = 626136876688978317L;
+    
     private Hashtable<String, Integer> lookUp;
 
     public Memory()

@@ -10,7 +10,7 @@ import antlr.SdtgParser.ChoiceExpressionContext;
 import antlr.SdtgParser.IdentifierListContext;
 import antlr.SdtgParser.KarmaOperationContext;
 import antlr.SdtgParser.TextBlockContext;
-import gameObjects.ChoicePrompt;
+import gameObjects.ChoiceTextLine;
 import gameObjects.NpcTextLine;
 import gameObjects.PlayerTextLine;
 import gameObjects.TextLine;
@@ -31,7 +31,7 @@ public class ParseTreeListener extends SdtgBaseListener {
     private EvaluationTree evalTree;
     private EvaluationTree.Node pNode;
     private TextLine textLine;
-    private ChoicePrompt.Choice choice;
+    private ChoiceTextLine.Choice choice;
     private String subject;
     private GameRunnable game;
     private Memory memo;
@@ -111,19 +111,19 @@ public class ParseTreeListener extends SdtgBaseListener {
     @Override
     public void enterChoicePrompt(SdtgParser.ChoicePromptContext ctx)
     {
-        textLine = new ChoicePrompt(subject, ctx.getChild(1).getText());
+        textLine = new ChoiceTextLine(subject, ctx.getChild(1).getText());
     }
 
     @Override
     public void enterChoiceExpression(ChoiceExpressionContext ctx)
     {
-        choice = ((ChoicePrompt) textLine).new Choice(ctx.getChild(0).getText());
+        choice = ((ChoiceTextLine) textLine).new Choice(ctx.getChild(0).getText());
     }
 
     @Override
     public void exitChoiceExpression(ChoiceExpressionContext ctx)
     {
-        ((ChoicePrompt) textLine).addChoice(choice);
+        ((ChoiceTextLine) textLine).addChoice(choice);
     }
 
     @Override

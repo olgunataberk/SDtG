@@ -10,10 +10,8 @@ import java.util.logging.Logger;
  */
 public class TextOutputRunnable extends RunnableConfiguration implements Runnable {
 
-    /**
-     * 
-     */
     private static final long serialVersionUID = 8092209390290703303L;
+    
     // TODO Fetch this information from somewhere else, as this might be changed
     // on runtime.
     private static final int SLEEP_INTERPRINT = 40;
@@ -56,6 +54,11 @@ public class TextOutputRunnable extends RunnableConfiguration implements Runnabl
         }
     }
 
+    /**
+     * Print the output line by line.
+     * By changing the value of SLEEP_INTERPRINT, text output speed can be adjusted.
+     * @throws InterruptedException
+     */
     private void doWork() throws InterruptedException
     {
         if (!outputQueue.isEmpty())
@@ -68,16 +71,11 @@ public class TextOutputRunnable extends RunnableConfiguration implements Runnabl
                 {
                     Thread.sleep(UPDATE_DELAY);
                 }
-                outputChar(str.charAt(i));
+                System.out.print(str.charAt(i));
                 lastWork = System.currentTimeMillis();
             }
-            outputChar(DELIMITER);
+            System.out.print(DELIMITER);
         }
-    }
-
-    private void outputChar(char c)
-    {
-        System.out.print(c);
     }
 
 }

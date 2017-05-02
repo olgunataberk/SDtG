@@ -2,7 +2,6 @@ package gameObjects;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.Scanner;
 
 import karmaComputation.KarmaOperation;
@@ -12,7 +11,7 @@ import karmaComputation.KarmaOperation;
  * 
  *
  */
-public class ChoicePrompt extends TextLine{
+public class ChoiceTextLine extends TextLine{
 
     /**
      * 
@@ -46,7 +45,7 @@ public class ChoicePrompt extends TextLine{
 
     private ArrayList<Choice> choiceList = new ArrayList<>();
 
-    public ChoicePrompt(String sub, String line)
+    public ChoiceTextLine(String sub, String line)
     {
         this.type = CHOICE_TEXTLINE;
         this.subject = sub;

@@ -2,24 +2,21 @@ package karmaComputation;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 import memory.Memory;
 
+/**
+ * Tree representing a boolean expression.
+ * 
+ */
 public class EvaluationTree implements Serializable{
 
-    /**
-     * 
-     */
     private static final long serialVersionUID = 8447252879168619273L;
 
     public class Node implements Serializable{
 
-        /**
-         * 
-         */
         private static final long serialVersionUID = -9218852452364269112L;
+        
         private static final int CONDITION = 0;
         private static final int OPERATOR = 1;
 
@@ -34,7 +31,12 @@ public class EvaluationTree implements Serializable{
         {
             children = new ArrayList<Node>();
         }
-
+        
+        /**
+         * Create a node that represents a condition
+         * @param cond a boolean expression with 2 operands.
+         * @parent parent of the instantiated node.
+         */
         public Node(String cond, Node parent)
         {
             this();
@@ -43,6 +45,11 @@ public class EvaluationTree implements Serializable{
             this.parent = parent;
         }
 
+        /**
+         * Create a node that represents an operator.
+         * @param op a boolean operator.
+         * @param parent parent of the instantiated node.
+         */
         public Node(char op, Node parent)
         {
             this();
@@ -73,6 +80,9 @@ public class EvaluationTree implements Serializable{
     private Memory memRef;
     private Node root;
 
+    /**
+     * Instantiate a tree with only one node.
+     */
     public EvaluationTree()
     {
         root = new Node();
@@ -84,6 +94,11 @@ public class EvaluationTree implements Serializable{
         return root;
     }
 
+    /**
+     * Evaluate the expression by traversing the tree.
+     * @param mem memory instance to use when looking-up karma variables.
+     * @return the result of a boolean expression.
+     */
     public boolean evaluate(Memory mem)
     {
         if (root.children.size() == 0) return true;
@@ -104,6 +119,9 @@ public class EvaluationTree implements Serializable{
 
     }
 
+    /**
+     * Evaluate a conditional operation at a leaf node.
+     */
     private boolean evaluateRelationalExpression(String exp)
     {
         if (exp.contains("<="))

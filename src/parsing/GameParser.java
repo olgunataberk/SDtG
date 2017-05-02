@@ -16,6 +16,11 @@ import org.antlr.v4.runtime.tree.ParseTreeWalker;
  */
 public class GameParser {
 
+    /**
+     * Parse the script and fill the GameRunnable.
+     * @param inputStream stream to read text from.
+     * @param game Game instance to fill.
+     */
     public void parse(InputStream inputStream, GameRunnable game) throws Exception
     {
         ANTLRInputStream input = new ANTLRInputStream(inputStream);
@@ -25,8 +30,8 @@ public class GameParser {
         ParseTree tree = parser.game();
         ParseTreeWalker walker = new ParseTreeWalker();
         ParseTreeListener listener = new ParseTreeListener(game);
+        //ParseTreeListener starts working here.
         walker.walk(listener, tree);
-
     }
 
 }
