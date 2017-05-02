@@ -33,6 +33,8 @@ import threading.runnables.GameRunnable;
  * Create an executable jar and a binary file, representing the whole game.
  * 
  */
+
+//TODO this class has too many hard-coded elements, small changes in project might lead to utter destruction.
 public class ExecutableCreator {
 
     //If run with eclipse, process' working directory points to project's directory.
@@ -44,9 +46,10 @@ public class ExecutableCreator {
     
     private static final String jarName = "yourGame.jar";
     private static final String appendDirectory = "\\src\\";
+    /*Be careful when playing with the files named below.*/
     private static final String[] requiredFiles = {
             "memory\\Memory.java",
-            "gameObjects\\ChoicePrompt.java","gameObjects\\NpcTextLine.java","gameObjects\\PlayerTextLine.java","gameObjects\\TextLine.java",
+            "gameObjects\\ChoiceTextLine.java","gameObjects\\NpcTextLine.java","gameObjects\\PlayerTextLine.java","gameObjects\\TextLine.java",
             "karmaComputation\\KarmaOperation.java","karmaComputation\\EvaluationTree.java",
             "preferences\\Config.java",
             "threading\\runnables\\GameRunnable.java","threading\\runnables\\RunnableConfiguration.java","threading\\runnables\\TextOutputRunnable.java",
