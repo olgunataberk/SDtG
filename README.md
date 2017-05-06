@@ -77,9 +77,9 @@ in your Script™.
       }
       ```
       will be displayed sequentially when `k1>50` is satisfied.
-- #### How ask for/handle input from user.
+- #### How to ask for/handle input from user.
    
-   This is a bit more complicated than defining a regular conversation. After specifying a name, you must write down the question and answers available to that question one by one enclosed by square brackets. Answers are defined as sets of two elements where the first one is the string representation of the choice and the other one is the procedure implying which KarmaVariables are affected in what way.
+   This is a bit more complicated than defining a regular conversation. After specifying a name, you must write down the question and answers available to that question one by one enclosed in square brackets. Answers are defined as sets of two elements where the first one is the string representation of the choice and the other one is the procedure implying which KarmaVariables are affected in what way.
    
    For example `jaraxxus:["Am I really jaraxxus?" "Yes":(k1+50)(k3-50),"Maybe"(k1-50),"I don't think so"(k2-40)]` would be displayed as:
    
