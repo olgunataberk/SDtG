@@ -16,6 +16,14 @@ A text-based-sci-fi-action-adventure-rpg game(or engine).
 (This works for Windows)
 Currently you can override "Example.txt" with your Script™. When executed SDtG will produce a bat file in a folder in your project folder named "exec/start.bat", which will execute the jar file.
 
+## Making Changes to the Grammar
+You can refer to http://www.antlr.org/ for a detailed explanation on how antlr works.
+
+- After modifying Sdtg.g4, copy it into thirdpartylib/.  
+- Invoke antlr from any console/terminal to create the lexer and parser for this grammar `java -jar antlr-4.6-complete.jar Sdtg.g4`.  
+- Copy the generated java source files to your src/antlr/ folder.  
+- You can now work with the new grammar, if needed refresh your project.
+
 ## How to Write a script  
 
 ### What is a script?  
