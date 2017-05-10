@@ -45,15 +45,15 @@ public class ExecutableCreator {
     
     
     private static final String jarName = "yourGame.jar";
-    private static final String appendDirectory = "\\src\\";
+    private static final String appendDirectory = "/src/";
     /*Be careful when playing with the files named below.*/
     private static final String[] requiredFiles = {
-            "memory\\Memory.java",
-            "gameObjects\\ChoiceTextLine.java","gameObjects\\NpcTextLine.java","gameObjects\\PlayerTextLine.java","gameObjects\\TextLine.java",
-            "karmaComputation\\KarmaOperation.java","karmaComputation\\EvaluationTree.java",
-            "preferences\\Config.java",
-            "threading\\runnables\\GameRunnable.java","threading\\runnables\\RunnableConfiguration.java","threading\\runnables\\TextOutputRunnable.java",
-            "threading\\threads\\BaseThread.java"
+            "memory/Memory.java",
+            "gameObjects/ChoiceTextLine.java","gameObjects/NpcTextLine.java","gameObjects/PlayerTextLine.java","gameObjects/TextLine.java",
+            "karmaComputation/KarmaOperation.java","karmaComputation/EvaluationTree.java",
+            "preferences/Config.java",
+            "threading/runnables/GameRunnable.java","threading/runnables/RunnableConfiguration.java","threading/runnables/TextOutputRunnable.java",
+            "threading/threads/BaseThread.java"
     };
     
     /**
@@ -61,7 +61,7 @@ public class ExecutableCreator {
      */
     public ExecutableCreator()
     {
-        targetDirectory = "\\exec";
+        targetDirectory = "/exec";
         workingDirectory = System.getProperty("user.dir");
         setMainFile();
     }
@@ -94,7 +94,7 @@ public class ExecutableCreator {
         /*Write game instance to file.*/
         try
         {
-            FileOutputStream fos = new FileOutputStream(workingDirectory + targetDirectory + "\\data.sdtgd");
+            FileOutputStream fos = new FileOutputStream(workingDirectory + targetDirectory + "/data.sdtgd");
             ObjectOutputStream oos = new ObjectOutputStream(fos);
             oos.writeObject(gameInstance);
             oos.close();
@@ -110,7 +110,7 @@ public class ExecutableCreator {
         for(String from : requiredFiles)
         {
             Path src = Paths.get(workingDirectory + appendDirectory + from);
-            Path dest = Paths.get(workingDirectory + targetDirectory + from.substring(from.lastIndexOf("\\")));
+            Path dest = Paths.get(workingDirectory + targetDirectory + from.substring(from.lastIndexOf("/")));
             try
             {
                 Files.copy(src, dest, StandardCopyOption.REPLACE_EXISTING);
@@ -125,7 +125,7 @@ public class ExecutableCreator {
         /*Create class containing the main function.*/
         try
         {
-            FileOutputStream fos = new FileOutputStream(workingDirectory + targetDirectory + "\\SdtgMain.java");
+            FileOutputStream fos = new FileOutputStream(workingDirectory + targetDirectory + "/SdtgMain.java");
             PrintWriter pw = new PrintWriter(fos);
             pw.print(mainJava);
             pw.close();
@@ -172,7 +172,7 @@ public class ExecutableCreator {
             man.getMainAttributes().put(Attributes.Name.CLASS_PATH, ".");
             man.getMainAttributes().put(Attributes.Name.MANIFEST_VERSION, "0.1");
             man.getMainAttributes().put(Attributes.Name.MAIN_CLASS, "mainPackage.SdtgMain");
-            FileOutputStream fos = new FileOutputStream(workingDirectory + targetDirectory + "\\" + jarName);
+            FileOutputStream fos = new FileOutputStream(workingDirectory + targetDirectory + "/" + jarName);
             JarOutputStream jos = new JarOutputStream(fos,man);
             int len = 0;
             byte[] buffer = new byte[1024];
@@ -188,13 +188,13 @@ public class ExecutableCreator {
                         if(s.contains(f.getName().replace(".class", "").substring(0,
                                 f.getName().indexOf("$") < 0 ? f.getName().replace(".class", "").length() : f.getName().indexOf("$"))))
                         {
-                            fullPath = s.substring(0,s.lastIndexOf("\\")+1) + f.getName();
+                            fullPath = s.substring(0,s.lastIndexOf("/")+1) + f.getName();
                             break;
                         }
                     }
                     if(fullPath == null)
                             fullPath = "mainPackage/SdtgMain.class";
-                    JarEntry je = new JarEntry(fullPath.replace("\\", "/"));
+                    JarEntry je = new JarEntry(fullPath.replace("/", "/"));
                     je.setComment("jarring.");
                     je.setTime(Calendar.getInstance().getTimeInMillis());
                     jos.putNextEntry(je);
@@ -220,7 +220,7 @@ public class ExecutableCreator {
         /*This seems to be important for the process of running the .jar on Windows.*/
         try
         {
-            FileOutputStream fos = new FileOutputStream(workingDirectory + targetDirectory + "\\start.bat");
+            FileOutputStream fos = new FileOutputStream(workingDirectory + targetDirectory + "/start.bat");
             PrintWriter pw = new PrintWriter(fos);
             pw.println("java -jar "+jarName);
             pw.close();
@@ -250,11 +250,11 @@ public class ExecutableCreator {
         mainJava = "package mainPackage;"+
                 "import java.io.FileInputStream;import java.io.IOException;import java.io.ObjectInputStream;import java.util.logging.Level;"+
                 "import java.util.logging.Logger;import threading.runnables.GameRunnable;import threading.threads.BaseThread;"+
-                "public class SdtgMain {private static final String pathToData = System.getProperty(\"user.dir\")+\"\\\\data.sdtgd\";"+
+                "public class SdtgMain {private static final String pathToData = System.getProperty(\"user.dir\")+\"//data.sdtgd\";"+
                 "public static void main(String[] args){ GameRunnable mainGame = null;try{FileInputStream fis = new FileInputStream(pathToData);"+
                 "ObjectInputStream ois = new ObjectInputStream(fis);mainGame = (GameRunnable) ois.readObject();ois.close();fis.close();}"+
                 "catch(IOException ioe){Logger.getGlobal().log(Level.SEVERE, ioe.getMessage());System.exit(1);}"+
-                "catch(ClassNotFoundException cnfe){Logger.getGlobal().log(Level.SEVERE, cnfe.getMessage() + \"\\n File might be corrupted.\");System.exit(2);}"+
+                "catch(ClassNotFoundException cnfe){Logger.getGlobal().log(Level.SEVERE, cnfe.getMessage() + \"/n File might be corrupted.\");System.exit(2);}"+
                 "BaseThread gameCapsule = new BaseThread(mainGame);gameCapsule.start();}}";
     }
     
