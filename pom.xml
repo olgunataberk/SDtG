@@ -15,9 +15,16 @@
         <configuration>
           <source>1.8</source>
           <target>1.8</target>
-          <mainClass>com.example.Main</mainClass>
         </configuration>
       </plugin>
+      <plugin>
+		  <groupId>org.codehaus.mojo</groupId>
+		  <artifactId>exec-maven-plugin</artifactId>
+		  <version>1.6.0</version>
+		  <configuration>
+		    <mainClass>mainPackage.SdtgMain</mainClass>
+		  </configuration>
+		</plugin>
     </plugins>
   </build>
   <dependencies>
