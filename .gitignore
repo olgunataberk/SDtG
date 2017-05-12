@@ -6,3 +6,4 @@ thirdpartylib/*.txt
 thirdpartylib/*~
 ExeMain
 exec/
+target/
