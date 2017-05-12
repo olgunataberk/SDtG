@@ -19,4 +19,11 @@
       </plugin>
     </plugins>
   </build>
+  <dependencies>
+  	<dependency>
+  		<groupId>org.antlr</groupId>
+  		<artifactId>antlr4-maven-plugin</artifactId>
+  		<version>4.3</version>
+  	</dependency>
+  </dependencies>
 </project>
