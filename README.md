@@ -1,6 +1,9 @@
 A text-based-sci-fi-action-adventure-rpg game(or engine).
 
 ### Setup Instructions  
+
+#### The old way
+
 1. Obtain git [For Windows](https://git-scm.com/download/win) or follow the instructions [For Ubuntu](https://help.ubuntu.com/lts/serverguide/git.html).  
 2. Open git-bash, or terminal on ubuntu.
 3. Use `git init` after navigating to your desired development folder.
@@ -10,6 +13,11 @@ A text-based-sci-fi-action-adventure-rpg game(or engine).
 5. Download [Antlr](http://www.antlr.org/) and set it as your projects dependency.
    - In Eclipse: Project Properties -> Java Build Path -> Libraries -> Add JARs -> Select the jar you downloaded from antlr.org.
 6. Now you are ready to work with the project on your favourite IDE(although I strongly suggest using Eclipse).
+
+#### Maven way
+
+You can use maven to build and run the project.  
+_TODO: Add instructions._ 
 
 ## How to Make a Game  
 
