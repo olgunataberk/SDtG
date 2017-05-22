@@ -21,8 +21,7 @@ _TODO: Add instructions._
 
 ## How to Make a Game  
 
-(This works for Windows)
-Currently you can override "Example.txt" with your Script™. When executed SDtG will produce a bat file in a folder in your project folder named "exec/start.bat", which will execute the jar file.
+Currently you can override "Example.txt" with your Script™. When executed SDtG will produce a jar file in a folder in your project folder named "exec/yourGame.jar", you can execute the jar file using Java to play the game made by the script you specified. Sdtg will also produce a bat file named "exec/start.bat" which will execute the jar file(apparently double-clicking the jar file on Windows does not start it correctly).
 
 ## Making Changes to the Grammar
 You can refer to http://www.antlr.org/ for a detailed explanation on how antlr works.
