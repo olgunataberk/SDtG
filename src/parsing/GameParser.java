@@ -4,6 +4,7 @@ import antlr.SdtgLexer;
 import antlr.SdtgParser;
 import threading.runnables.GameRunnable;
 
+import java.io.IOException;
 import java.io.InputStream;
 
 import org.antlr.v4.runtime.ANTLRInputStream;
@@ -21,7 +22,7 @@ public class GameParser {
      * @param inputStream stream to read text from.
      * @param game Game instance to fill.
      */
-    public void parse(InputStream inputStream, GameRunnable game) throws Exception
+    public void parse(InputStream inputStream, GameRunnable game) throws IOException
     {
         ANTLRInputStream input = new ANTLRInputStream(inputStream);
         SdtgLexer lexer = new SdtgLexer(input);

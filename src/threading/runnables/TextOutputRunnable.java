@@ -14,7 +14,7 @@ public class TextOutputRunnable extends RunnableConfiguration implements Runnabl
     
     // TODO Fetch this information from somewhere else, as this might be changed
     // on runtime.
-    private static final int SLEEP_INTERPRINT = 40;
+    private static final int SLEEP_INTERPRINT = 60;
     private static final char DELIMITER = '\n';
 
     // TODO try and make a write only(from outside) linked list.

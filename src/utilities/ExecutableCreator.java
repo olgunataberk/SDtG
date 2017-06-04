@@ -57,7 +57,7 @@ public class ExecutableCreator {
     };
     
     /**
-     * Without specifying the directory, executable file is stored in folder named exec.
+     * If not specified, executable file is stored in folder named exec.
      */
     public ExecutableCreator()
     {
@@ -67,7 +67,7 @@ public class ExecutableCreator {
     }
     
     /**
-     * Instantiate an ExecutableCreator which will output to the specified directory(WorkingDirectory/SpecifiedDirectory).
+     * Instantiate an ExecutableCreator which will output to the specified directory(WorkingDirectory/dir).
      * @param dir Path to directory 
      */
     public ExecutableCreator(String dir)
@@ -122,7 +122,7 @@ public class ExecutableCreator {
                 return false;
             }
         }
-        /*Create class containing the main function.*/
+        /*Create main class.*/
         try
         {
             FileOutputStream fos = new FileOutputStream(workingDirectory + targetDirectory + "/SdtgMain.java");
@@ -183,8 +183,8 @@ public class ExecutableCreator {
                     String fullPath = null;
                     for(String s : requiredFiles)
                     {
-                        System.out.println(s + " : " + f.getName().replace(".class", "").substring(0,
-                                f.getName().indexOf("$") < 0 ? f.getName().replace(".class", "").length() : f.getName().indexOf("$")));
+                        //System.out.println(s + " : " + f.getName().replace(".class", "").substring(0,
+                        //        f.getName().indexOf("$") < 0 ? f.getName().replace(".class", "").length() : f.getName().indexOf("$")));
                         if(s.contains(f.getName().replace(".class", "").substring(0,
                                 f.getName().indexOf("$") < 0 ? f.getName().replace(".class", "").length() : f.getName().indexOf("$"))))
                         {
@@ -244,7 +244,7 @@ public class ExecutableCreator {
         element.delete();
     }
     
-    /*Cheating static initialization.*/
+    /*Cheating around static initialization.*/
     private void setMainFile()
     {
         mainJava = "package mainPackage;"+
