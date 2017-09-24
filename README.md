@@ -39,19 +39,19 @@ Script™ is a text file that SDtG needs to create an executable text-based game
 
 - conversations between entities,
 - questions to the player,
-- again conversations that happen depending on the player's choices' 
+- again conversations that happen depending on the player's choices 
 
 in your Script™.
 
 ### Instructions
 
-- #### How to make a regular conversation.
+- #### How to declare a regular conversation.
    
-   The syntax of regular conversations is very simple. First you must specify a name, let it be `jaraxxus` for the following example. If `jaraxxus` is supposed to talk(which should be the case if you are creating a regular conversation) you can write down what the entity will say between two double quotation marks preceeded by a colon. 
+   The syntax for a regular conversation is very simple. First you must specify a name, let it be `jaraxxus` for the following example. If `jaraxxus` is supposed to talk(which should be the case if you are creating a regular conversation) you can write down what the entity will say between two double quotation marks preceeded by a colon. 
    
    In the end it should look like this -> `jaraxxus : "You face jaraxxus!"`.
    
-   Also note that whitespace is not important outside the text enclosed by quotation marks, meaning `jaraxxus:"You face jaraxxus!"` and the above example would be the same.
+   Also note that whitespace is not important outside the text enclosed by quotation marks, meaning `jaraxxus:"You face jaraxxus!"` and the above example are identical.
 
 - #### How decision making works.
 
@@ -95,4 +95,4 @@ in your Script™.
    Yes|Maybe|I don't think so
    ```
    
-   When the player chooses an option the accompanying expressions are evaluated. On this example, if the player were to type "Yes", k1 would be incremented by 50 and k3 would be decremented by 50.
+   When the player chooses an option, the accompanying expressions are evaluated. On this case, if the player were to type "Yes", k1 would be incremented by 50 and k3 would be decremented by 50.
